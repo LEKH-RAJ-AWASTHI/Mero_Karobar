@@ -1,38 +1,4 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-
-    <title>My Website</title>
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <script src="js/bootstrap.min.js"></script>
-   </head>
-
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="index.html">Mero Karobar</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#collapsibleNavbar">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <strong><a class="nav-link " href="invoices.html">Invoices</a></strong>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="transaction.html">Transaction</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Stock</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
+<?php include('partials/header.inc.php'); ?>
     <!-- purchase bill -->
     <div class="forms mt-5 pt-5">
       <!-- The Modal -->
@@ -331,14 +297,4 @@
 
     </div>
 
-    <div class="footer">
-        <nav class="navbar navbar-expand-sm bg-info navbar-dark fixed-bottom">
-            <div class="container-fluid d-flex justify-content-center ">
-                <span class="">@2023 Mero Karobar | All Rights Reserved | Contact Us: +977-9848426461</span>
-            </div>
-        </nav>
-    </div>
-
-</body>
-
-</html>
+<?php include('partials/footer.inc.php'); ?>
