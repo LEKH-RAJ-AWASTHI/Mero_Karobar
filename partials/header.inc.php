@@ -1,7 +1,7 @@
 <?php
      include('config/connection.inc.php'); 
      include('config/functions.inc.php');
-     include('login-check.inc.php')
+    //  include('login-check.inc.php');
 ?>
 
 <!DOCTYPE html>

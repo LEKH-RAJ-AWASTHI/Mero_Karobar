@@ -1,5 +1,14 @@
 <?php include('partials/header.inc.php'); ?>
-
+<?php
+    if(isset($_SESSION['add'])){
+      echo $_SESSION['add']; //Displaying session message
+      unset($_SESSION['add']); //removing session message
+    }
+    if(isset($_SESSION['upload'])){
+      echo $_SESSION['upload']; //Displaying session message
+      unset($_SESSION['upload']); //removing session message
+    }
+    ?>
 
     <div class="modal" id="addClient">
         <div class="modal-dialog">
@@ -11,7 +20,7 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
       
-            <!-- Modal body -->
+            <!-- M    odal body -->
             <div class="container">
             <form action="" method="post" enctype="multipart/form-data">
                     <div class="form-group">
@@ -19,9 +28,42 @@
                         <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name">
                     </div>
                     <div class="form-group">
-                        <label for="address">Address</label>
-                        <input type="text" class="form-control" id="address" name="address" placeholder="Enter Address">
+                        <label for="name">Firm Name</label>
+                        <input type="text" class="form-control" id="name" name="firm" placeholder="Enter Name">
                     </div>
+                    <label for="address">Address</label>
+                    <div class="row border m-2 p-2 rounded">
+                <div class="col">
+
+                    <label for="state" class="form-label">Province:</label>
+                    <input class="form-control" list="states" name="province" id="state" oninput="populateDistricts()">
+                    <datalist id="states">
+                        <option value="">Select a state</option>
+                        <option value="Koshi"></option>
+                        <option value="Madhesh"></option>
+                        <option value="Bagmati"></option>
+                        <option value="Gandaki"></option>
+                        <option value="Lumbini"></option>
+                        <option value="Karnali"></option>
+                        <option value="Sudurpaschim"></option>
+                    </datalist>
+                </div>
+
+                <div class="col">
+
+                    <label for="district" class="form-label">District:</label>
+                    <input class="form-control" list="districts" name="district" id="district">
+                    <datalist id="districts">
+                        <option value="">Select a district</option>
+
+                    </datalist>
+                </div>
+                <div class="col">
+                    <label for="city" class="form-label">City:</label>
+                    <input class="form-control" name="city" id="city">
+
+                </div>
+            </div>
                     <div class="form-group">
                         <label for="PAN-Number">PAN-Number</label>
                         <input type="text" class="form-control" id="PAN-Number" name="PAN_Number" placeholder="Enter PAN-Number">
@@ -33,7 +75,7 @@
                     </div>
                     <div class="form-group">
                         <label for="image">Image</label>
-                        <input type="file" name="image" accept=".jpg,.jpeg,.png" class="form-control" id="image">
+                        <input type="file" name="image" accept="image/*" class="form-control" id="image">
 
                     </div>
                     <div class="container-fluid d-flex justify-content-center m-3">
@@ -76,44 +118,102 @@
 
             <table class="table table-bordered">
                 <thead>
-                    <tr>
-                        <th>Firstname</th>
-                        <th>Lastname</th>
+                    
+                        <th>S.No</th>
+                        <th>Customer Name</th>
+                        <th>Firm Name</th>
+                        <th>Address</th>
+                        <th>PAN Number</th>
                         <th>Email</th>
-                        <th>Action</th>
-                    </tr>
+                        <th>Image</th>
+                    
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>John</td>
-                        <td>Doe</td>
-                        <td>john@example.com</td>
-                        <td>
-                            <button type="button" class="btn btn-danger btn-block"> Delete</button>
-                            <button type="button" class="btn btn-info btn-block"> View Account</button>
+                <?php
+                $sql="SELECT * FROM client";
+                $res= mysqli_query($con,$sql);
 
-                        </td>
+                if($res){
+                    //count rows
+                    $count=mysqli_num_rows($res);// function to show the number of rows
+                    if($count>0)
+                    {
+                        $sn=1;
+                       while($rows=mysqli_fetch_assoc($res))
+                       {
+                            $id= $rows['client_id'];
+                            $name=$rows['name'];
+                            $firm_name=$rows['firm_name'];
+                            $pan_number=$rows['pan_number'];
+                            $email=$rows['email'];
+                            $image_name= $rows['client_img'];
+                           
+                            //for address
+                            $sqlAddr="SELECT * FROM address WHERE client_id='$id'";
+                            $resAddr=mysqli_query($con, $sqlAddr);
+                            if($resAddr)
+                            {
+                                $countAddr=mysqli_num_rows($resAddr);
+                                if($countAddr>0)
+                                {
+                                    while ($rowsAddr=mysqli_fetch_assoc($resAddr)) {
+                                        $address_id=$rowsAddr['id'];
+                                        $province=$rowsAddr['province'];
+                                        $district=$rowsAddr['district'];
+                                        $city=$rowsAddr['city'];
 
-                    </tr>
-                    <tr>
-                        <td>Mary</td>
-                        <td>Moe</td>
-                        <td>mary@example.com</td>
-                        <td>
-                            <button type="button" class="btn btn-danger btn-block"> Delete</button>
-                            <button type="button" class="btn btn-info btn-block"> View Account</button>
-                        </td>
 
-                    </tr>
-                    <tr>
-                        <td>July</td>
-                        <td>Dooley</td>
-                        <td>july@example.com</td>
-                        <td>
-                            <button type="button" class="btn btn-danger btn-block"> Delete</button>
-                            <button type="button" class="btn btn-info btn-block"> View Account</button>
-                        </td>
-                    </tr>
+                                        //concatination of address
+                                        $address=$province.', '.$district.', '. $city;
+
+                                    }
+                                }
+
+                            }
+
+                            
+                            // displaying the value in table
+                            ?>
+                            <tr>
+                            <td><?php echo $sn++; ?></td>
+                            <td><?php echo $name; ?></td>
+                            <td><?php echo $firm_name; ?></td>
+                            <td><?php echo $address; ?></td>
+                            <td><?php echo $pan_number; ?></td>
+                            <td><?php echo $email; ?></td>
+
+                            <td>
+                                <?php 
+                                    if($image_name!=''){
+                                        // display image
+                                        ?>
+                                        <img src="<?php echo SITEURL;?>images/client/<?php echo $image_name?>" width="70px" alt="Image">
+                                        <?php
+                                    }
+                                    else
+                                    {
+                                        // Display the message
+                                        echo '<p style="color:red;"">No image found</p>';
+
+                                    }
+                                ?>
+                            </td>
+
+                            <td>
+                                <a href="<?php echo SITEURL; ?>admin/update-category.php?id=<?php echo $id ?>&image_name=<?php echo $image_name?>" class="btn btn-secondary">Update category</a>
+                                <a href="<?php echo SITEURL; ?>admin/delete-category.php?id=<?php echo $id ?>&image_name=<?php echo $image_name?>" class="btn btn-danger">Remove category</a>
+
+                            </td>
+                        </tr>
+                        <?php 
+                        }
+                    }
+                    else
+                    {
+                        // echo "We donot have data in database";
+                    }
+                }
+            ?>
                 </tbody>
             </table>
         </div>
@@ -125,15 +225,20 @@
         // echo "clicked";
         // get the values from form
         $name=get_safe_value($con,$_POST['name']);
-        $address=get_safe_value($con,$_POST['address']);
+        $firm=get_safe_value($con,$_POST['firm']);
+        $province=get_safe_value($con,$_POST['province']);
+        $district=get_safe_value($con,$_POST['district']);
+        $city=get_safe_value($con,$_POST['city']);
         $PAN_Number=get_safe_value($con,$_POST['PAN_Number']);
         $email=get_safe_value($con,$_POST['email']);
 
+        
 
 
         //checking whether image is selected or not and doing futher operations
         if(isset($_FILES['image']['name']))//checking if image is selected or not and if file has name or not( name can be shown by using print_r the value of $_FILES['image'])
         {
+          
         // pr($_FILES['image']);
         // die();
           //upload the image
@@ -150,7 +255,7 @@
             
             $image_name="client_".time().".".$ext; 
             $source_path=$_FILES['image']['tmp_name'];
-            $destination_path='/images/client/'.$image_name;
+            $destination_path='images/client/'.$image_name;
             //upload image
             $upload=move_uploaded_file($source_path, $destination_path);
           //   if ($file['error'] == 0) {
@@ -167,50 +272,104 @@
               '<div id="add" class="alert alert-danger" role="alert">
                 Failed to upload image.
                 </div>';
-            //   header("location:".SITEURL."admin/add-category.php");
-              die();
+            //   header("location:".SITEURL."admin/add-Client.php");
+              // die();
       
             }
           }
-         
+        }
 
-      }
-      else{
-        //don't upload image and 
-        $image_name='';
-      }
+        else{
+          // echo("image not selected");
+          //don't upload image and 
+          $image_name='';
+        }
+        // echo($name);
+        //   echo($firm);
+        //   echo($province);
+        //   echo($district);
+        //   echo($city);
+        //   echo($PAN_Number);
+        //   echo($email);
+        //   echo($image_name);
+        //   die();
 
-      $sql="insert into tbl_category set
-            name='$name',
-            address='$address',
-            PAN_NUMBER='$name',
-            name='$name',
-            image_name='$image_name',
-            
-            ";
-      
-      $res= mysqli_query($con, $sql);
+        //sql query to save data into client database
 
-      if($res){
-        $_SESSION['add']='
-    
-        <div id="add" class="alert alert-success" role="alert">
-        Category added Successfully
+
+        $sql="INSERT INTO client SET
+              name='$name',
+              firm_name='$firm', 
+              pan_number='$PAN_Number',
+              email='$email',
+              client_img='$image_name'
+              ";
         
-      </div>
-      ';
+         $res= mysqli_query($con, $sql);
+        if($res){
+          $client_id=mysqli_insert_id($con);
+          $sql2="INSERT INTO address SET
+              client_id='$client_id',
+              province='$province',
+              district='$district',
+              city='$city'
+              ";
+          $res2=mysqli_query($con, $sql2);
+          if($res2)
+          {
+            $_SESSION['add']='
+        
+            <div id="add" class="alert alert-success" role="alert">
+            Client added Succesfully
+            
+            </div>';
+            // header("location:".SITEURL."index.php");
+          }
 
+          else{
+            $_SESSION['add']="Failed to add Client";
+              // header("location:".SITEURL."customer.php");
+    
+          }
+        }
 
-        // REDIRECT TO MANAGE ADMIN 
-        // header("location:".SITEURL."admin/manage-category.php");
-
-      }
-      else{
-        //failed to add category
-        $_SESSION['add']="Failed to add category";
-        //   header("location:".SITEURL."admin/add-category.php");
-
-      }
+        
+    
     }
   ?>
+     <script type="text/javascript">
+        // Define the districts for each state
+        var districtsByState = {
+          Koshi: ["Morang", "Sunsari", "Dhankuta", "Sankhuwasabha", "Bhojpur", "Terhathum", "Okhaldhunga", "Khotang", "Solukhumbu", "Udayapur"],
+          Madhesh: ["Saptari", "Siraha", "Dhanusha", "Mahottari", "Sarlahi", "Bara", "Parsa", "Rautahat"],
+          Bagmati: ["Sindhuli", "Ramechhap", "Dolakha", "Sindhupalchok", "Kavrepalanchok", "Lalitpur", "Bhaktapur", "Kathmandu", "Nuwakot", "Rasuwa", "Dhading", "Makwanpur", "Chitwan"],
+          Gandaki: ["Gorkha", "Manang", "Mustang", "Parbat", "Baglung", "Gulmi", "Palpa", "Nawalpur", "Syangja", "Tanahun", "Lamjung"],
+          Lumbini: ["Arghakhanchi", "Kapilvastu", "Parasi", "Rupandehi", "Gulmi", "Palpa", "Nawalpur", "Syangja", "Tanahun", "Lamjung"],
+          Karnali: ["Dolpa", "Humla", "Jumla", "Kalikot", "Mugu", "Banke", "Bardiya", "Dailekh", "Jajarkot", "Surkhet", "Salyan", "Rukum", "Rolpa"],
+          Sudurpaschim: ["Achham", "Baitadi", "Bajhang", "Bajura", "Dadeldhura", "Darchula", "Doti", "Kailali", "Kanchanpur"]
+            // Add more districts for each state here
+        };
+
+        // Function to populate the district select options based on the selected state
+        function populateDistricts() {
+            var stateSelect = document.getElementById("state");
+            var districtSelect = document.getElementById("districts");
+            var selectedState = stateSelect.value;
+
+            // Clear previous district options
+            districtSelect.innerHTML = "<option value=''>Select a district</option>";
+
+            // Populate district options based on the selected state
+            if (selectedState) {
+                var districts = districtsByState[selectedState];
+                for (var i = 0; i < districts.length; i++) {
+                    var option = document.createElement("option");
+                    option.value = districts[i];
+                    option.textContent = districts[i];
+                    districtSelect.appendChild(option);
+                }
+            }
+
+        }
+    </script>
 <?php include('partials/footer.inc.php'); ?>

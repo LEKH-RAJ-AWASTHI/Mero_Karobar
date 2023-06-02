@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>State and District Filters</title>
+</head>
+<body>
+  <h1>State and District Filters</h1>
+  
+  <label for="state">Select State:</label>
+  <select id="state" onchange="populateDistricts()">
+    <option value="">Select a state</option>
+    <option value="state1">State 1</option>
+    <option value="state2">State 2</option>
+    <option value="state3">State 3</option>
+    <!-- Add more state options here -->
+  </select>
+  
+  <br>
+  
+  <label for="district">Select District:</label>
+  <select id="district">
+    <option value="">Select a district</option>
+    <!-- District options will be populated dynamically using JavaScript -->
+  </select>
+  
+  <script>
+    // Define the districts for each state
+    var districtsByState = {
+      state1: ["District 1", "District 2", "District 3"],
+      state2: ["District A", "District B", "District C"],
+      state3: ["District X", "District Y", "District Z"]
+      // Add more districts for each state here
+    };
+    
+    // Function to populate the district select options based on the selected state
+    function populateDistricts() {
+      var stateSelect = document.getElementById("state");
+      var districtSelect = document.getElementById("district");
+      var selectedState = stateSelect.value;
+      
+      // Clear previous district options
+      districtSelect.innerHTML = "<option value=''>Select a district</option>";
+      
+      // Populate district options based on the selected state
+      if (selectedState) {
+        var districts = districtsByState[selectedState];
+        for (var i = 0; i < districts.length; i++) {
+          var option = document.createElement("option");
+          option.value = districts[i];
+          option.textContent = districts[i];
+          districtSelect.appendChild(option);
+        }
+      }
+    }
+  </script>
+</body>
+</html>
