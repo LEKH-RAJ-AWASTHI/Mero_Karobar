@@ -1,5 +1,6 @@
-<?php include('../partials/header.inc.php'); ?>
-
+<?php
+    include("../partials/header.inc.php");
+?>
 <div class="container-fluid d-flex justify-content-center mt-4 ">
         <h2>Add Client</h2>
     </div>
@@ -114,8 +115,8 @@
               '<div id="add" class="alert alert-danger" role="alert">
                 Failed to upload image.
                 </div>';
-              header("location:".SITEURL."admin/add-Client.php");
-            //   die();
+              header("location:".SITEURL."forms/add-client.php");
+              die();
             }
           }
         }
@@ -164,7 +165,7 @@
             
             </div>';
             header("location:".SITEURL."/sites/customer.php");
-          }
+        }
 
           else{
             $_SESSION['add']="Failed to add Client";

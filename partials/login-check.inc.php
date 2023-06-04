@@ -12,5 +12,4 @@ if(!isset($_SESSION['user']))//user session not set i.e. user is not logged in
   ';
     header('location:'.SITEURL.'admin/login.php');
 }
-
 ?>
