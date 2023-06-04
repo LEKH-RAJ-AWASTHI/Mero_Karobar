@@ -1,6 +1,6 @@
 <?php
-     include('config/connection.inc.php'); 
-     include('config/functions.inc.php');
+     include('../config/connection.inc.php'); 
+     include('../config/functions.inc.php');
     //  include('login-check.inc.php');
 ?>
 
@@ -10,8 +10,8 @@
 <head>
 
     <title>My Website</title>
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <script src="../js/bootstrap.min.js"></script>
    </head>
 
 <body>
