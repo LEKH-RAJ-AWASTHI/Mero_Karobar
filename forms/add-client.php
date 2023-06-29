@@ -1,14 +1,15 @@
 <?php
-    include("../partials/header.inc.php");
+    include("../partials/header.inc.php");    
 ?>
 <div class="container-fluid d-flex justify-content-center mt-4 ">
         <h2>Add Client</h2>
     </div>
 
+    
 
 <div class="container border border-warning border-3 rounded p-5 my-3">
 
-    <form action="" method="post" enctype="multipart/form-data">
+    <form action="" method="POST" enctype="multipart/form-data">
         <div class="form-group">
             <label for="name">Name</label>
             <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name">
@@ -20,6 +21,7 @@
         <label for="address">Address</label>
         <div class="row border m-2 p-2 rounded">
             <div class="col">
+
     
                 <label for="state" class="form-label">Province:</label>
                 <input class="form-control" list="states" name="province" id="state" oninput="populateDistricts()">
@@ -60,18 +62,28 @@
     
         </div>
         <div class="form-group">
+            <label for="phone-number">Phone Number</label>
+            <input type="text" class="form-control" id="phone-number" name="phone_number" placeholder="Enter phone-number">
+        </div>
+
+        <div class="form-group">
+
             <label for="image">Image</label>
+
             <input type="file" name="image" accept="image/*" class="form-control" id="image">
     
         </div>
+
         <div class="container-fluid d-flex justify-content-center m-3">
-            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+            <input type="submit" value="Add client" name="submit" class="btn btn-primary"></input>
         </div>
     </form>
 </div>
-<?php 
+
+<?php
     if(isset($_POST['submit']))
     {
+         
         // echo "clicked";
         // get the values from form
         $name=get_safe_value($con,$_POST['name']);
@@ -81,6 +93,7 @@
         $city=get_safe_value($con,$_POST['city']);
         $PAN_Number=get_safe_value($con,$_POST['PAN_Number']);
         $email=get_safe_value($con,$_POST['email']);
+        $phone_number=get_safe_value($con, $_POST['phone_number']);
         //checking whether image is selected or not and doing futher operations
         if(isset($_FILES['image']['name']))//checking if image is selected or not and if file has name or not( name can be shown by using print_r the value of $_FILES['image'])
         {
@@ -127,14 +140,15 @@
           $image_name='';
         }
         // echo($name);
-        //   echo($firm);
-        //   echo($province);
-        //   echo($district);
-        //   echo($city);
-        //   echo($PAN_Number);
-        //   echo($email);
-        //   echo($image_name);
-        //   die();
+        // echo($firm);
+        // echo($province);
+        // echo($district);
+        // echo($city);
+        // echo($PAN_Number);
+        // echo($email);
+        // echo ($phone_number);
+        // echo($image_name);
+        // die();
 
         //sql query to save data into client database
 
@@ -143,10 +157,15 @@
               firm_name='$firm', 
               pan_number='$PAN_Number',
               email='$email',
+              phone_number='$phone_number',
               client_img='$image_name'
               ";
+
+        // echo $sql; die();
         
          $res= mysqli_query($con, $sql);
+        //  echo $res; die();
+
         if($res){
           $client_id=mysqli_insert_id($con);
           $sql2="INSERT INTO address SET
@@ -164,51 +183,15 @@
             Client added Succesfully
             
             </div>';
-            header("location:".SITEURL."/sites/customer.php");
+            header("location:".SITEURL."sites/customer.php");
         }
 
           else{
             $_SESSION['add']="Failed to add Client";
-              header("location:".SITEURL."/sites/customer.php");
+              header("location:".SITEURL."sites/customer.php");
           }
         }
     }
-  ?>
-
-<script type="text/javascript">
-        // Define the districts for each state
-        var districtsByState = {
-          Koshi: ["Morang", "Sunsari", "Dhankuta", "Sankhuwasabha", "Bhojpur", "Terhathum", "Okhaldhunga", "Khotang", "Solukhumbu", "Udayapur"],
-          Madhesh: ["Saptari", "Siraha", "Dhanusha", "Mahottari", "Sarlahi", "Bara", "Parsa", "Rautahat"],
-          Bagmati: ["Sindhuli", "Ramechhap", "Dolakha", "Sindhupalchok", "Kavrepalanchok", "Lalitpur", "Bhaktapur", "Kathmandu", "Nuwakot", "Rasuwa", "Dhading", "Makwanpur", "Chitwan"],
-          Gandaki: ["Gorkha", "Manang", "Mustang", "Parbat", "Baglung", "Gulmi", "Palpa", "Nawalpur", "Syangja", "Tanahun", "Lamjung"],
-          Lumbini: ["Arghakhanchi", "Kapilvastu", "Parasi", "Rupandehi", "Gulmi", "Palpa", "Nawalpur", "Syangja", "Tanahun", "Lamjung"],
-          Karnali: ["Dolpa", "Humla", "Jumla", "Kalikot", "Mugu", "Banke", "Bardiya", "Dailekh", "Jajarkot", "Surkhet", "Salyan", "Rukum", "Rolpa"],
-          Sudurpaschim: ["Achham", "Baitadi", "Bajhang", "Bajura", "Dadeldhura", "Darchula", "Doti", "Kailali", "Kanchanpur"]
-            // Add more districts for each state here
-        };
-
-        // Function to populate the district select options based on the selected state
-        function populateDistricts() {
-            var stateSelect = document.getElementById("state");
-            var districtSelect = document.getElementById("districts");
-            var selectedState = stateSelect.value;
-
-            // Clear previous district options
-            districtSelect.innerHTML = "<option value=''>Select a district</option>";
-
-            // Populate district options based on the selected state
-            if (selectedState) {
-                var districts = districtsByState[selectedState];
-                for (var i = 0; i < districts.length; i++) {
-                    var option = document.createElement("option");
-                    option.value = districts[i];
-                    option.textContent = districts[i];
-                    districtSelect.appendChild(option);
-                }
-            }
-
-        }
-    </script>
+?>
 
 <?php include('../partials/footer.inc.php'); ?>

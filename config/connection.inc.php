@@ -1,4 +1,4 @@
-<?php
+<?php 
     session_start();
 
     define('SITEURL','http://localhost/mero_karobar/');

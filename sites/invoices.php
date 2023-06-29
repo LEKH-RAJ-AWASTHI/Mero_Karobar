@@ -1,242 +1,18 @@
-<?php include('partials/header.inc.php'); ?>
-    <!-- purchase bill -->
-    <div class="forms mt-5 pt-5">
-      <!-- The Modal -->
-      <div class="modal" id="purchaseModal">
-        <div class="modal-dialog">
-          <div class="modal-content">
-      
-            <!-- Modal Header -->
-            <div class="modal-header">
-              <h4 class="modal-title">Purchase Bill</h4>
-              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-      
-            <!-- Modal body -->
-            <div class="container">
-                <form>
-                    <div class="form-group">
-                        <label for="date">Date</label>
-                        <input type="date" class="form-control" id="date" placeholder="Enter Date">
-                    </div>
-                    <div class="form-group">
-                        <label for="particular">Client</label>
-                        
-                        <select class="form-control" id="client">
-                            <option selected>Select Client</option>
-                            <option>Client 1</option>
-                            <option>Client 2</option>
-                            <option>Client 3</option>
-                            <option>Client 4</option>
-                        </select>
+<?php include('../partials/header.inc.php'); ?>
 
-                    </div>
-                    <div class="form-group">
-                        <label for="pan-number">PAN Number</label>
-                        <input type="text" class="form-control" id="pan-number" placeholder="Enter PAN Number">
+    <!-- <div class="forms mt-5 pt-5"> -->
+    <!-- <div> -->
 
-                    </div>
-                    <div class="form-group">
-                        <label for="particular">product</label>
-                        
-                        <select class="form-control" id="product">
-                            <option selected>Select Product</option>
-                            <option>Product 1</option>
-                            <option>Product 2</option>
-                            <option>Product 3</option>
-                            <option>Product 4</option>
-                        </select>
+        <!-- purchase bill was here -->
 
-                    </div>
-                    <div class="form-group">
-                        <label for="quantity">Quantity</label>
-                        <input type="text" class="form-control" id="quantity" placeholder="Enter Quantity">
+        <!-- sales bill was here -->
 
-                    </div>
-                    <div class="form-group">
-                        <label for="rate">Rate</label>
-                        <input type="text" class="form-control" id="rate" placeholder="Enter Rate">
+        <!-- Voucher bill was here -->
 
-                    </div>
-                    <div class="container-fluid d-flex justify-content-center m-3">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-                </form>
-            </div>
-      
-            <!-- Modal footer -->
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-            </div>
-      
-          </div>
-        </div>
-      </div>
-
-      <!-- sales bill -->
-      
-      <!-- The Modal -->
-      <div class="modal" id="salesModal">
-        <div class="modal-dialog">
-          <div class="modal-content">
-      
-            <!-- Modal Header -->
-            <div class="modal-header">
-              <h4 class="modal-title">Sales Bill</h4>
-              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-      
-            <!-- Modal body -->
-            <div class="container">
-                <form>
-                    <div class="form-group">
-                        <label for="date">Date</label>
-                        <input type="date" class="form-control" id="date" placeholder="Enter Date">
-                    </div>
-                    <div class="form-group">
-                        <label for="particular">Client</label>
-                        
-                        <select class="form-control" id="client">
-                            <option selected>Select Client</option>
-                            <option>Client 1</option>
-                            <option>Client 2</option>
-                            <option>Client 3</option>
-                            <option>Client 4</option>
-                        </select>
-
-                    </div>
-                    <div class="form-group">
-                        <label for="pan-number">PAN Number</label>
-                        <input type="text" class="form-control" id="pan-number" placeholder="Enter PAN Number">
-
-                    </div>
-                    <div class="form-group">
-                        <label for="particular">product</label>
-                        
-                        <select class="form-control" id="product">
-                            <option selected>Select Product</option>
-                            <option>Product 1</option>
-                            <option>Product 2</option>
-                            <option>Product 3</option>
-                            <option>Product 4</option>
-                        </select>
-
-                    </div>
-                    <div class="form-group">
-                        <label for="quantity">Quantity</label>
-                        <input type="text" class="form-control" id="quantity" placeholder="Enter Quantity">
-
-                    </div>
-                    <div class="form-group">
-                        <label for="rate">Rate</label>
-                        <input type="text" class="form-control" id="rate" placeholder="Enter Rate">
-
-                    </div>
-                    <div class="container-fluid d-flex justify-content-center m-3">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-                </form>
-            </div>
-      
-            <!-- Modal footer -->
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-            </div>
-      
-          </div>
-        </div>
-      </div>
-
-      <!-- //voucher bill -->
-      
-      <!-- The Modal -->
-      <div class="modal" id="voucherModal">
-        <div class="modal-dialog">
-          <div class="modal-content">
-      
-            <!-- Modal Header -->
-            <div class="modal-header">
-              <h4 class="modal-title">Voucher Bill</h4>
-              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-      
-            <!-- Modal body -->
-            <div class="container">
-                <form>
-                    <div class="form-group">
-                        <label for="date">Date</label>
-                        <input type="date" class="form-control" id="date" placeholder="Enter Date">
-                    </div>
-                    <div class="form-group">
-                        <label for="particular">particular</label>
-                        <textarea class="form-control" id="particular" rows="3" placeholder="Enter particular"></textarea>
-
-                    </div>
-                    <div class="form-group">
-                        <label for="amount">Amount</label>
-                        <input type="text" class="form-control" id="amount" placeholder="Enter amount">
-
-                    </div>
-                    <div class="container-fluid d-flex justify-content-center m-3">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-                </form>
-            </div>
-      
-            <!-- Modal footer -->
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-            </div>
-      
-          </div>
-        </div>
-      </div>
+        <!-- Receipt bill was here -->
 
         <!-- //receipt bill -->
-          
-          <!-- The Modal -->
-          <div class="modal" id="receiptModal">
-            <div class="modal-dialog">
-              <div class="modal-content">
-          
-                <!-- Modal Header -->
-                <div class="modal-header">
-                  <h4 class="modal-title">Receipt Bill</h4>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-          
-                <!-- Modal body -->
-                <div class="container">
-                    <form>
-                        <div class="form-group">
-                            <label for="date">Date</label>
-                            <input type="date" class="form-control" id="date" placeholder="Enter Date">
-                        </div>
-                        <div class="form-group">
-                            <label for="particular">particular</label>
-                            <textarea class="form-control" id="particular" rows="3" placeholder="Enter particular"></textarea>
-    
-                        </div>
-                        <div class="form-group">
-                            <label for="amount">Amount</label>
-                            <input type="text" class="form-control" id="amount" placeholder="Enter amount">
-    
-                        </div>
-                        <div class="container-fluid d-flex justify-content-center m-3">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                    </form>
-                </div>
-          
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                </div>
-          
-              </div>
-            </div>
-          </div>
-        </div>
+    </div>
 
     <div class="body">
 
@@ -251,9 +27,9 @@
                             <div class="row">
                                 <h4 class="col-9 card-title">Purchase Bill</h4>
                             </div>
-                            <button href="customer.html" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#purchaseModal">View
+                            <a href="../forms/purchase-bill.php" class="btn btn-primary mt-3" >View
                                 
-                            </button>
+                            </a>
 
                         </div>
                     </div>
@@ -262,9 +38,9 @@
                             <div class="row">
                                 <h4 class="col-9 card-title">Sales Bill</h4>
                             </div>
-                            <button href="#" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#salesModal">View
+                            <a href="../forms/sales-bill.php" class="btn btn-primary mt-3">View
                                 
-                            </button>
+                            </a>
 
                         </div>
                     </div>
@@ -273,9 +49,9 @@
                             <div class="row">
                                 <h4 class="col-9 card-title">Voucher Bill</h4>
                             </div>
-                            <button class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#voucherModal">View
+                            <a href="../forms/voucher-bill.php" class="btn btn-primary mt-3" >View
                                 
-                            </button>
+                            </a>
 
                         </div>
                     </div>
@@ -285,9 +61,9 @@
                             <div class="row">
                                 <h4 class="col-9 card-title">Receipt Bill</h4>
                             </div>
-                            <button class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#receiptModal">View
+                            <a href="../forms/receipt-bill.php" class="btn btn-primary mt-3" >View
                                 
-                            </button>
+                            </a>
 
                         </div>
                     </div>
@@ -297,4 +73,4 @@
 
     </div>
 
-<?php include('partials/footer.inc.php'); ?>
+<?php include('../partials/footer.inc.php'); ?>

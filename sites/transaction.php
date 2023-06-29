@@ -1,4 +1,4 @@
-<?php include('partials/header.inc.php'); ?>
+<?php include('../partials/header.inc.php'); ?>
 
 
     <div class="dropdown m-3">
@@ -74,4 +74,4 @@
 
 
 
-<?php include('partials/footer.inc.php'); ?>
+<?php include('../partials/footer.inc.php'); ?>

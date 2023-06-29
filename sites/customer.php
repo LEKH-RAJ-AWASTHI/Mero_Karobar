@@ -5,9 +5,29 @@
       echo $_SESSION['add']; //Displaying session message
       unset($_SESSION['add']); //removing session message
     }
+    if(isset($_SESSION['delete'])){
+      echo $_SESSION['delete']; //Displaying session message
+      unset($_SESSION['delete']); //removing session message
+    }
+    if(isset($_SESSION['remove'])){
+      echo $_SESSION['remove']; //Displaying session message
+      unset($_SESSION['remove']); //removing session message
+    }
+    if(isset($_SESSION['client-not-exist'])){
+      echo $_SESSION['client-not-exist']; //Displaying session message
+      unset($_SESSION['client-not-exist']); //removing session message
+    }
+    if(isset($_SESSION['update'])){
+      echo $_SESSION['update']; //Displaying session message
+      unset($_SESSION['update']); //removing session message
+    }
     if(isset($_SESSION['upload'])){
       echo $_SESSION['upload']; //Displaying session message
       unset($_SESSION['upload']); //removing session message
+    }
+    if(isset($_SESSION['db-error'])){
+      echo $_SESSION['db-error']; //Displaying session message
+      unset($_SESSION['db-error']); //removing session message
     }
     ?>
 
@@ -25,14 +45,14 @@
         </div>
     </div>
 
-
-    <div class="container">
+<?php //search button ?>
+    <!-- <div class="container">
         <div class="container search-box pb-3 p-0 fs-5">
 
             <input style="width: 800px" class="p-2" type="search" name="" id="">
             <button class="p-2 px-5" type="submit">Search</button>
-        </div>
-        <div class="container">
+        </div> -->
+        <div class="container"> 
 
 
             <table class="table table-bordered">
@@ -44,6 +64,7 @@
                         <th>Address</th>
                         <th>PAN Number</th>
                         <th>Email</th>
+                        <th>Phone Number </th>
                         <th>Image</th>
                     
                 </thead>
@@ -65,6 +86,7 @@
                             $firm_name=$rows['firm_name'];
                             $pan_number=$rows['pan_number'];
                             $email=$rows['email'];
+                            $phone_number=$rows['phone_number'];
                             $image_name= $rows['client_img'];
                            
                             //for address
@@ -100,6 +122,7 @@
                             <td><?php echo $address; ?></td>
                             <td><?php echo $pan_number; ?></td>
                             <td><?php echo $email; ?></td>
+                            <td><?php echo $phone_number; ?></td>
 
                             <td>
                                 <?php 
@@ -119,12 +142,13 @@
                             </td>
 
                             <td>
-                                <a href="<?php echo SITEURL; ?>admin/update-category.php?id=<?php echo $id ?>&image_name=<?php echo $image_name?>" class="btn btn-secondary">View</a>
-                                <a href="<?php echo SITEURL; ?>admin/delete-category.php?id=<?php echo $id ?>&image_name=<?php echo $image_name?>" class="btn btn-danger">Remove Client</a>
+                                <a href="<?php echo SITEURL; ?>forms/update-client.php?id=<?php echo $id ?>&image_name=<?php echo $image_name?>" class="btn btn-secondary">View</a>
+                                <a href="<?php echo SITEURL; ?>forms/update-client.php?id=<?php echo $id ?>&image_name=<?php echo $image_name?>" class="btn btn-secondary">Update</a>
+                                <a href="<?php echo SITEURL; ?>forms/delete-client.php?id=<?php echo $id ?>&image_name=<?php echo $image_name?>" class="btn btn-danger">Remove Client</a>
 
                             </td>
-                        </tr>
-                        <?php 
+                         </tr>
+                            <?php 
                         }
                     }
                     else
