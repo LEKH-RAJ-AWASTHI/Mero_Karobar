@@ -78,110 +78,6 @@
     }
 
     ?>
-
-<div class="container border border-warning border-3 rounded p-5 my-3">
-
-    <form action="" method="POST" enctype="multipart/form-data">
-        <div class="form-group">
-            <label for="name">Name</label>
-            <input type="hidden" name="id" value="<?php echo $id;?>">
-            <input type="text" class="form-control" id="name" name="name" value="<?php echo $name;?>"  placeholder="Enter Name">
-        </div>
-        <div class="form-group">
-            <label for="firm">Firm Name</label>
-            <input type="text" class="form-control" id="firm" name="firm_name" value="<?php echo $firm_name;?>"  placeholder="Enter Name">
-        </div>
-        <label for="address">Address</label>"
-        <div class="row border m-2 p-2 rounded">
-            <div class="col">
-
-    
-                <label for="state" class="form-label">Province:</label>
-                <input class="form-control" list="states" name="province" value="<?php echo $province;?>" id="state" oninput="populateDistricts()">
-                <datalist id="states">
-                    <option value="">Select a state</option>
-                    <option value="Koshi"></option>
-                    <option value="Madhesh"></option>
-                    <option value="Bagmati"></option>
-                    <option value="Gandaki"></option>
-                    <option value="Lumbini"></option>
-                    <option value="Karnali"></option>
-                    <option value="Sudurpaschim"></option>
-                </datalist>
-            </div>
-    
-            <div class="col">
-    
-                <label for="district" class="form-label">District:</label>
-                <input class="form-control" list="districts" name="district" value="<?php echo $district;?>" id="district">
-                <datalist id="districts">
-                    <option value="">Select a district</option>
-    
-                </datalist>
-            </div>
-            <div class="col">
-                <label for="city" class="form-label">City:</label>
-                <input class="form-control" name="city" value="<?php echo $city;?>" id="city">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="PAN-Number">PAN-Number</label>
-            <input type="text" class="form-control" id="PAN-Number" name="pan_number" value="<?php echo $pan_number;?>"  placeholder="Enter PAN-Number">
-        </div>
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" name="email" value="<?php echo $email;?>"  placeholder="Enter Email">
-    
-        </div>
-        <div class="form-group">
-            <label for="phone-number">Phone-Number</label>
-            <input type="text" class="form-control" id="phone-number" name="phone_number" value="<?php echo $phone_number;?>"  placeholder="Enter phone-number">
-    
-        </div>
-
-        <div class="form-group">
-            <label for="current-image">Current Image:</label>
-            <!-- Image will be displayed here -->
-            <?php
-                if($image_name==$curr_image)
-                {
-                    if($curr_image!='')
-                    {
-                        ?>
-                        <img src="<?php echo SITEURL;?>images/client/<?php echo $curr_image;?>" style="border-radius:50%; margin:2%;"  width="200px" alt="Image">
-                        <?php
-                    }
-                    else
-                    {
-                        echo '<p style="color:red;">Image not Added </p>';
-                    }
-                }
-                else
-                {
-                    $_SESSION['food-not-exist']=
-                    '<div id="add" class="alert alert-danger" role="alert">
-                    Image changed.
-                    </div>';
-                    header('location:'.SITEURL.'sites/customer.php');
-        
-                }
-            ?>
-        </div>
-
-        <div class="form-group">
-
-            <label for="image">Select Image</label>
-
-            <input type="file" id="image" name="image" accept="image/*" class="form-control" >
-    
-        </div>
-
-        <div class="container-fluid d-flex justify-content-center m-3">
-            <input type="submit" class="btn btn-primary" value="Update client" name="submit">
-        </div>
-    </form>
-</div>
-
 <?php 
    //updating price of product\
    if(isset($_POST['submit']))
@@ -286,5 +182,110 @@
         }
    }
 ?>
+
+<div class="container border border-warning border-3 rounded p-5 my-3">
+
+    <form action="" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="hidden" name="id" value="<?php echo $id;?>">
+            <input type="text" class="form-control" id="name" name="name" value="<?php echo $name;?>"  placeholder="Enter Name">
+        </div>
+        <div class="form-group">
+            <label for="firm">Firm Name</label>
+            <input type="text" class="form-control" id="firm" name="firm_name" value="<?php echo $firm_name;?>"  placeholder="Enter Name">
+        </div>
+        <label for="address">Address</label>"
+        <div class="row border m-2 p-2 rounded">
+            <div class="col">
+
+    
+                <label for="state" class="form-label">Province:</label>
+                <input class="form-control" list="states" name="province" value="<?php echo $province;?>" id="state" oninput="populateDistricts()">
+                <datalist id="states">
+                    <option value="">Select a state</option>
+                    <option value="Koshi"></option>
+                    <option value="Madhesh"></option>
+                    <option value="Bagmati"></option>
+                    <option value="Gandaki"></option>
+                    <option value="Lumbini"></option>
+                    <option value="Karnali"></option>
+                    <option value="Sudurpaschim"></option>
+                </datalist>
+            </div>
+    
+            <div class="col">
+    
+                <label for="district" class="form-label">District:</label>
+                <input class="form-control" list="districts" name="district" value="<?php echo $district;?>" id="district">
+                <datalist id="districts">
+                    <option value="">Select a district</option>
+    
+                </datalist>
+            </div>
+            <div class="col">
+                <label for="city" class="form-label">City:</label>
+                <input class="form-control" name="city" value="<?php echo $city;?>" id="city">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="PAN-Number">PAN-Number</label>
+            <input type="text" class="form-control" id="PAN-Number" name="pan_number" value="<?php echo $pan_number;?>"  placeholder="Enter PAN-Number">
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" value="<?php echo $email;?>"  placeholder="Enter Email">
+    
+        </div>
+        <div class="form-group">
+            <label for="phone-number">Phone-Number</label>
+            <input type="text" class="form-control" id="phone-number" name="phone_number" value="<?php echo $phone_number;?>"  placeholder="Enter phone-number">
+    
+        </div>
+
+        <div class="form-group">
+            <label for="current-image">Current Image:</label>
+            <!-- Image will be displayed here -->
+            <?php
+                if($image_name==$curr_image)
+                {
+                    if($curr_image!='')
+                    {
+                        ?>
+                        <img src="<?php echo SITEURL;?>images/client/<?php echo $curr_image;?>" style="border-radius:50%; margin:2%;"  width="200px" alt="Image">
+                        <?php
+                    }
+                    else
+                    {
+                        echo '<p style="color:red;">Image not Added </p>';
+                    }
+                }
+                else
+                {
+                    $_SESSION['food-not-exist']=
+                    '<div id="add" class="alert alert-danger" role="alert">
+                    Image changed.
+                    </div>';
+                    header('location:'.SITEURL.'sites/customer.php');
+        
+                }
+            ?>
+        </div>
+
+        <div class="form-group">
+
+            <label for="image">Select Image</label>
+
+            <input type="file" id="image" name="image" accept="image/*" class="form-control" >
+    
+        </div>
+
+        <div class="container-fluid d-flex justify-content-center m-3">
+            <input type="submit" class="btn btn-primary" value="Update client" name="submit">
+        </div>
+    </form>
+</div>
+
+
 
 <?php include('../partials/footer.inc.php'); ?>

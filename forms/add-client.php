@@ -4,83 +4,7 @@
 <div class="container-fluid d-flex justify-content-center mt-4 ">
         <h2>Add Client</h2>
     </div>
-
-    
-
-<div class="container border border-warning border-3 rounded p-5 my-3">
-
-    <form action="" method="POST" enctype="multipart/form-data">
-        <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name">
-        </div>
-        <div class="form-group">
-            <label for="firm">Firm Name</label>
-            <input type="text" class="form-control" id="firm" name="firm" placeholder="Enter Name">
-        </div>
-        <label for="address">Address</label>
-        <div class="row border m-2 p-2 rounded">
-            <div class="col">
-
-    
-                <label for="state" class="form-label">Province:</label>
-                <input class="form-control" list="states" name="province" id="state" oninput="populateDistricts()">
-                <datalist id="states">
-                    <option value="">Select a state</option>
-                    <option value="Koshi"></option>
-                    <option value="Madhesh"></option>
-                    <option value="Bagmati"></option>
-                    <option value="Gandaki"></option>
-                    <option value="Lumbini"></option>
-                    <option value="Karnali"></option>
-                    <option value="Sudurpaschim"></option>
-                </datalist>
-            </div>
-    
-            <div class="col">
-    
-                <label for="district" class="form-label">District:</label>
-                <input class="form-control" list="districts" name="district" id="district">
-                <datalist id="districts">
-                    <option value="">Select a district</option>
-    
-                </datalist>
-            </div>
-            <div class="col">
-                <label for="city" class="form-label">City:</label>
-                <input class="form-control" name="city" id="city">
-    
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="PAN-Number">PAN-Number</label>
-            <input type="text" class="form-control" id="PAN-Number" name="PAN_Number" placeholder="Enter PAN-Number">
-        </div>
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email">
-    
-        </div>
-        <div class="form-group">
-            <label for="phone-number">Phone Number</label>
-            <input type="text" class="form-control" id="phone-number" name="phone_number" placeholder="Enter phone-number">
-        </div>
-
-        <div class="form-group">
-
-            <label for="image">Image</label>
-
-            <input type="file" name="image" accept="image/*" class="form-control" id="image">
-    
-        </div>
-
-        <div class="container-fluid d-flex justify-content-center m-3">
-            <input type="submit" value="Add client" name="submit" class="btn btn-primary"></input>
-        </div>
-    </form>
-</div>
-
-<?php
+    <?php
     if(isset($_POST['submit']))
     {
          
@@ -133,7 +57,6 @@
             }
           }
         }
-
         else{
           // echo("image not selected");
           //don't upload image and 
@@ -193,5 +116,64 @@
         }
     }
 ?>
+<div class="container border border-warning border-3 rounded p-5 my-3">
+    <form action="" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name">
+        </div>
+        <div class="form-group">
+            <label for="firm">Firm Name</label>
+            <input type="text" class="form-control" id="firm" name="firm" placeholder="Enter Name">
+        </div>
+        <label for="address">Address</label>
+        <div class="row border m-2 p-2 rounded">
+            <div class="col">
+                <label for="state" class="form-label">Province:</label>
+                <input class="form-control" list="states" name="province" id="state" oninput="populateDistricts()">
+                <datalist id="states">
+                    <option value="">Select a state</option>
+                    <option value="Koshi"></option>
+                    <option value="Madhesh"></option>
+                    <option value="Bagmati"></option>
+                    <option value="Gandaki"></option>
+                    <option value="Lumbini"></option>
+                    <option value="Karnali"></option>
+                    <option value="Sudurpaschim"></option>
+                </datalist>
+            </div>
+            <div class="col">
+                <label for="district" class="form-label">District:</label>
+                <input class="form-control" list="districts" name="district" id="district">
+                <datalist id="districts">
+                    <option value="">Select a district</option>
+                </datalist>
+            </div>
+            <div class="col">
+                <label for="city" class="form-label">City:</label>
+                <input class="form-control" name="city" id="city">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="PAN-Number">PAN-Number</label>
+            <input type="text" class="form-control" id="PAN-Number" name="PAN_Number" placeholder="Enter PAN-Number">
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email">
+        </div>
+        <div class="form-group">
+            <label for="phone-number">Phone Number</label>
+            <input type="text" class="form-control" id="phone-number" name="phone_number" placeholder="Enter phone-number">
+        </div>
+        <div class="form-group">
+            <label for="image">Image</label>
+            <input type="file" name="image" accept="image/*" class="form-control" id="image">
+        </div>
+        <div class="container-fluid d-flex justify-content-center m-3">
+            <input type="submit" value="Add client" name="submit" class="btn btn-primary"></input>
+        </div>
+    </form>
+</div>
 
 <?php include('../partials/footer.inc.php'); ?>

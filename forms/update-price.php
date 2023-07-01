@@ -1,12 +1,10 @@
 <?php
     include("../partials/header.inc.php");
-    
 ?>
 
 <div class="container-fluid d-flex justify-content-center mt-4 ">
         <h2>Update Price</h2>
     </div>
-
 <?php
 $sn=0;
 // getting product name and existing price
@@ -23,60 +21,7 @@ $sn=0;
         {
 
 ?>
-<div class="container">
-                <table class="table table-bordered">
-                    <form action="" method="POST" enctype="multipart/form-data">
-                    <thead>
-                        <th>S.No</th>
-                        <th>Product Name</th>
-                        <th>Purchase Price</th>
-                        <th>Sales Price</th>
-                    </thead>   
-                <?php
-                
-                    while($rows= mysqli_fetch_assoc($res))
-                    {
-                        $sn++;
-                        $id=$rows['product_id'];
-                        $name=$rows['product_name'];
-                ?>
-                    <tr>
-                        <td>
-                            <?php echo $sn ?>
-                        </td>
-                        <td>
-
-                            <label for="name"><?php echo $name?></label>
-                        </td>
-                        <td>  
-                            <input type="hidden" name="id" value="<?php echo $id ?>">
-                            <!-- the above line contains last product id when submit is clicked because of the loop  -->
-                            <input type="number" class="form-control" id="name" name="product_purchase_price_<?php echo $id;?>" placeholder="Enter Purchase Price">
-                        </td>
-                        <td>
-                            <input type="number" class="form-control" id="name" name="product_sales_price_<?php echo $id;?>" placeholder="Enter Sales Price">
-                        </td> 
-                    </tr>      
-                <?php
-                    }
-                }
-    }
-
-?>
-
-        <tr>
-            <td colspan="4">
-
-                <div class="container-fluid d-flex justify-content-center m-3">
-                    <input type="submit" value="Update" name="submit" class="btn btn-primary"></input>
-                </div>
-            </td>
-        </tr>
-    </form>
-</table>
-</div>
 <?php
-    $product=1;
     if(isset($_POST['submit'])) 
     {
         $res=mysqli_query($con,$sql);
@@ -114,13 +59,58 @@ $sn=0;
             header("location:".SITEURL."forms/update-price.php");
         }
     }
+?>
+<div class="container">
+                <table class="table table-bordered">
+                    <form action="" method="POST" enctype="multipart/form-data">
+                    <thead>
+                        <th>S.No</th>
+                        <th>Product Name</th>
+                        <th>Purchase Price</th>
+                        <th>Sales Price</th>
+                    </thead>   
+                <?php
+                
+                    while($rows= mysqli_fetch_assoc($res))
+                    {
+                        $sn++;
+                        $id=$rows['product_id'];
+                        $name=$rows['product_name'];
+                ?>
+                    <tr>
+                        <td>
+                            <?php echo $sn; ?>
+                        </td>
+                        <td>
 
-
+                            <label for="name"><?php echo $name;?></label>
+                        </td>
+                        <td>  
+                            <input type="hidden" name="id" value="<?php echo $id; ?>">
+                            <!-- the above line contains last product id when submit is clicked because of the loop  -->
+                            <input type="number" class="form-control" id="name" name="product_purchase_price_<?php echo $id;?>" placeholder="Enter Purchase Price">
+                        </td>
+                        <td>
+                            <input type="number" class="form-control" id="name" name="product_sales_price_<?php echo $id;?>" placeholder="Enter Sales Price">
+                        </td> 
+                    </tr>      
+                <?php
+                    }
+                }
+    }
 
 ?>
 
-<?php 
-   //updating price of product
-?>
+        <tr>
+            <td colspan="4">
+
+                <div class="container-fluid d-flex justify-content-center m-3">
+                    <input type="submit" value="Update" name="submit" class="btn btn-primary"></input>
+                </div>
+            </td>
+        </tr>
+    </form>
+</table>
+</div>
 
 <?php include('../partials/footer.inc.php'); ?>
