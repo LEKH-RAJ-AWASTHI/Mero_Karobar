@@ -21,6 +21,14 @@
             <label for="product_name">Product Name</label>
             <input type="text" class="form-control" id="product_name" name="product_name" placeholder="Enter Product Name">
         </div>
+        <div class="form-group">
+            <label for="purchase_price">Purchase Price</label>
+            <input type="text" class="form-control" id="purchase_price" name="purchase_price" placeholder="Enter Product purchase price">
+        </div>
+        <div class="form-group">
+            <label for="sales_price">Sales Price</label>
+            <input type="text" class="form-control" id="product_name" name="sales_price" placeholder="Enter Product sales price">
+        </div>
         
         <div class="container-fluid d-flex justify-content-center m-3">
             <input type="submit" value="Add Product" name="submit" class="btn btn-primary"></input>
@@ -33,14 +41,29 @@
    if(isset($_POST['submit']))
    {
         $product_name=get_safe_value($con,$_POST['product_name']);
-        // echo($product_name);
+        $purchase_price=get_safe_value($con, $_POST['purchase_price']);
+        $sales_price=get_safe_value($con, $_POST['sales_price']);
+        $date=date("Y-m-d H:i:s");
+
+        // echo $product_name."<br>";
+        // echo $purchase_price."<br>";
+        // echo $sales_price."<br>";
+        // echo $date."<br>";
         // die();
     
 
         $sql="INSERT INTO product (product_name) VALUES('$product_name')";
         $res=mysqli_query($con,$sql) or die(mysqli_error());
-
         if($res)
+        {
+            $product_id=mysqli_insert_id($con);
+            $sqlPrice="INSERT INTO price SET
+                        product_id='$product_id',
+                        purchase_price='$purchase_price',
+                        sales_price='$sales_price',
+                        effective_date='$date'";
+            $resPrice=mysqli_query($con, $sqlPrice);
+            if($resPrice)
         {
             $_SESSION['add']='
             
@@ -62,6 +85,8 @@
             ';  
             header("location:".SITEURL."forms/add-product.php");
 
+        }
+            
         }
         
     }
