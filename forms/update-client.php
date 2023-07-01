@@ -285,7 +285,4 @@
         </div>
     </form>
 </div>
-
-
-
 <?php include('../partials/footer.inc.php'); ?>

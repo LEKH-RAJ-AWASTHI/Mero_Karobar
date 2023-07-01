@@ -1,5 +1,11 @@
 
 <?php include('../partials/header.inc.php'); ?>
+<?php
+    if(isset($_SESSION['update'])){
+        echo $_SESSION['update']; //Displaying session message
+        unset($_SESSION['update']); //removing session message
+      }
+?>
 
     <div class="body">
 
