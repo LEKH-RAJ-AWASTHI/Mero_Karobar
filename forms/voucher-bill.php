@@ -11,6 +11,21 @@
             <label for="date">Date</label>
             <input type="date" class="form-control" id="date" placeholder="Enter Date">
         </div>
+        <div class="form-group" >
+            <label for="particular">Client</label>
+            
+            <select class="form-control" name="client" id="client">
+
+            </select>
+
+        </div>
+        <div class="form-group" id="panNumDiv">
+            <label for="pan-number">PAN Number</label>
+            <input type="text" class="form-control" id="pan_number" placeholder="Enter PAN Number">
+        </div>
+         <div id="error-message" style="display: none;"></div>
+        <div id="success-message" style="display: none;"></div>
+
         <div class="form-group">
             <label for="particular">particular</label>
             <textarea class="form-control" id="particular" rows="3" placeholder="Enter particular"></textarea>
@@ -26,4 +41,5 @@
     </div>
     </form>
 </div>
+<script src="../js/bill-client.js"></script>
 <?php include('../partials/footer.inc.php'); ?>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Disable Select Form</title>
+</head>
+<body>
+    <label for="products">Select a product:</label>
+<select id="products" onchange="updateFruitSelection()">
+    <option value="apple">Apple</option>
+    <option value="banana">Banana</option>
+    <option value="orange">Orange</option>
+    <option value="grapes">Grapes</option>
+</select>
+
+<label for="fruits">Fruit selection:</label>
+<select id="fruits">
+    <option value="apple">Apple</option>
+    <option value="banana">Banana</option>
+    <option value="orange">Orange</option>
+    <option value="grapes">Grapes</option>
+</select>
+
+    <script>
+        function updateFruitSelection() {
+            // Get the selected product value
+            var selectedProduct = document.getElementById("products").value;
+        
+            // Set the same value in the "fruits" select element
+            document.getElementById("fruits").value = selectedProduct;
+        }
+        </script>
+        
+</body>
+</html>

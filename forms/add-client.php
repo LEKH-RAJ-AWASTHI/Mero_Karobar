@@ -86,7 +86,7 @@
 
         // echo $sql; die();
         
-         $res= mysqli_query($con, $sql);
+         $res= mysqli_query($con, $sql) or die(mysqli_error($con));
         //  echo $res; die();
 
         if($res){
@@ -97,7 +97,7 @@
               district='$district',
               city='$city'
               ";
-          $res2=mysqli_query($con, $sql2);
+          $res2=mysqli_query($con, $sql2) or die(mysqli_error($con));
           if($res2)
           {
             $_SESSION['add']='

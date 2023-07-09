@@ -34,7 +34,7 @@
                             <a class="nav-link" href="<?php echo SITEURL;?>sites/transaction.php">Transaction</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Stock</a>
+                            <a class="nav-link" href="<?php echo SITEURL;?>sites/stock.php">Stock</a>
                         </li>
                     </ul>
                     <a href="../forms/update-price.php"  class="btn btn-secondary" > Update Price</a>

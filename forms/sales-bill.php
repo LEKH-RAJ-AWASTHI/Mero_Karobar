@@ -11,32 +11,25 @@
             <label for="date">Date</label>
             <input type="date" class="form-control" id="date" placeholder="Enter Date">
         </div>
-        <div class="form-group">
+        <div class="form-group" >
             <label for="particular">Client</label>
             
-            <select class="form-control" id="client">
-                <option selected>Select Client</option>
-                <option>Client 1</option>
-                <option>Client 2</option>
-                <option>Client 3</option>
-                <option>Client 4</option>
+            <select class="form-control" name="client" id="client">
+
             </select>
 
         </div>
-        <div class="form-group">
+        <div class="form-group" id="panNumDiv">
             <label for="pan-number">PAN Number</label>
-            <input type="text" class="form-control" id="pan-number" placeholder="Enter PAN Number">
-
+            <input type="text" class="form-control" id="pan_number" placeholder="Enter PAN Number">
         </div>
+         <div id="error-message" style="display: none;"></div>
+        <div id="success-message" style="display: none;"></div>
         <div class="form-group">
             <label for="particular">product</label>
             
             <select class="form-control" id="product">
-                <option selected>Select Product</option>
-                <option>Product 1</option>
-                <option>Product 2</option>
-                <option>Product 3</option>
-                <option>Product 4</option>
+
             </select>
 
         </div>
@@ -55,4 +48,6 @@
     </div>
     </form>
 </div>
+<script src="../js/bill-client.js"></script>
+<script src="../js/get-sales-price.js"></script>
 <?php include('../partials/footer.inc.php'); ?>

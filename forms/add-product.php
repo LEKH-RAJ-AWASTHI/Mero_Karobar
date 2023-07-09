@@ -29,7 +29,10 @@
             <label for="sales_price">Sales Price</label>
             <input type="text" class="form-control" id="product_name" name="sales_price" placeholder="Enter Product sales price">
         </div>
-        
+        <div class="form-group">
+            <label for="stock">Stock</label>
+            <input type="text" class="form-control" id="stock" name="stock" placeholder="Enter Stock Available in KG">
+        </div>
         <div class="container-fluid d-flex justify-content-center m-3">
             <input type="submit" value="Add Product" name="submit" class="btn btn-primary"></input>
         </div>
@@ -43,6 +46,7 @@
         $product_name=get_safe_value($con,$_POST['product_name']);
         $purchase_price=get_safe_value($con, $_POST['purchase_price']);
         $sales_price=get_safe_value($con, $_POST['sales_price']);
+        $stock=get_safe_value($con, $_POST['stock']);
         $date=date("Y-m-d H:i:s");
 
         // echo $product_name."<br>";
@@ -64,31 +68,36 @@
                         effective_date='$date'";
             $resPrice=mysqli_query($con, $sqlPrice);
             if($resPrice)
-        {
-            $_SESSION['add']='
-            
-                <div id="add" class="alert alert-success" role="alert">
-                Product Added Successfully
+            {
+                $sqlStock="INSERT INTO stock SET 
+                            stock_level ='$stock',
+                            product_id='$product_id'";
+                $resStock=mysqli_query($con, $sqlStock);
+                if($resStock)
+                {
+                    $_SESSION['add']='
                 
-                </div>
-                ';
-            header("location:".SITEURL."sites/product.php");
-        }
-        else
-        {
-            $_SESSION['add']='
-            
-            <div id="add" class="alert alert-danger" role="alert">
-            Product Addition Failed
-            
-            </div>
-            ';  
-            header("location:".SITEURL."forms/add-product.php");
+                    <div id="add" class="alert alert-success" role="alert">
+                    Product Added Successfully
+                    
+                    </div>
+                    ';
+                    header("location:".SITEURL."sites/product.php");
+                }
+                else
+                {
+                    $_SESSION['add']='
+                    
+                    <div id="add" class="alert alert-danger" role="alert">
+                    Product Addition Failed
+                    
+                    </div>
+                    ';  
+                    header("location:".SITEURL."forms/add-product.php");
 
+                }
+            }
         }
-            
-        }
-        
     }
 ?>
 
