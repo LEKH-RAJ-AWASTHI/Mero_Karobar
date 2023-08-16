@@ -6,11 +6,11 @@ function loadClient(){
        if(data['empty'])
        {
            document.getElementById("client").disabled = true;
-           client_input.innerHTML=`<option selected>No Client Found</option>`;
+           client_input.innerHTML=`<option value="" selected>No Client Found</option>`;
         }
         else
         {
-        var clients=`<option selected>Select Client</option>`;
+        var clients=`<option value="" selected>Select Client</option>`;
 
         client_input.setAttribute('onchange','selectPAN()');
         for(var i in data)

@@ -66,7 +66,6 @@
                         <th>Email</th>
                         <th>Phone Number </th>
                         <th>Image</th>
-                    
                 </thead>
                 <tbody>
                 <?php
@@ -109,10 +108,7 @@
 
                                     }
                                 }
-
                             }
-
-                            
                             // displaying the value in table
                             ?>
                             <tr>
@@ -136,7 +132,6 @@
                                     {
                                         // Display the message
                                         echo '<p style="color:red;"">No image found</p>';
-
                                     }
                                 ?>
                             </td>
@@ -145,7 +140,6 @@
                                 <a href="<?php echo SITEURL; ?>forms/update-client.php?id=<?php echo $id ?>&image_name=<?php echo $image_name?>" class="btn btn-secondary">View</a>
                                 <a href="<?php echo SITEURL; ?>forms/update-client.php?id=<?php echo $id ?>&image_name=<?php echo $image_name?>" class="btn btn-secondary">Update</a>
                                 <a href="<?php echo SITEURL; ?>forms/delete-client.php?id=<?php echo $id ?>&image_name=<?php echo $image_name?>" class="btn btn-danger">Remove Client</a>
-
                             </td>
                          </tr>
                             <?php 
@@ -195,7 +189,6 @@
                     districtSelect.appendChild(option);
                 }
             }
-
         }
     </script>
 

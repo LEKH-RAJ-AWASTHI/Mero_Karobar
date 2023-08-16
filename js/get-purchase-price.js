@@ -2,7 +2,7 @@ function loadProduct(){
     fetch('../forms/get_price.php')
     .then((response)=>response.json())
     .then((data)=>{
-        var product_input=document.getElementById('product');
+        const product_input=document.getElementById('product');
         if(data['empty'])
         {
             document.getElementById("product").disabled = true;

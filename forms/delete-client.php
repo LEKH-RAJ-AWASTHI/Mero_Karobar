@@ -32,9 +32,12 @@
         // echo $id;
         //2. execute the query to delete
         $sqlAddr="DELETE FROM address WHERE client_id=$id";
+        $resAddr=mysqli_query($con, $sqlAddr) or die(mysqli_error($con));
+
         $sql="DELETE FROM client WHERE client_id=$id";
-        $resAddr=mysqli_query($con, $sqlAddr);
-        $res= mysqli_query($con, $sql);
+        $res= mysqli_query($con, $sql) or die(mysqli_error($con));
+
+        
         if($res && $resAddr)
         {
             // echo "food deleted succesfully";
