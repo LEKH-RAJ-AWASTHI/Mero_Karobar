@@ -12,12 +12,12 @@
         <!-- Receipt bill was here -->
 
         <!-- //receipt bill -->
-    </div>
+    <!-- </div> -->
     <?php
-    if(isset($_SESSION['add'])){
-      echo $_SESSION['add']; //Displaying session message
-      unset($_SESSION['add']); //removing session message
-    }
+        if(isset($_SESSION['add'])){
+        echo $_SESSION['add']; //Displaying session message
+        unset($_SESSION['add']); //removing session message
+        }
     ?>
 
     <div class="body">

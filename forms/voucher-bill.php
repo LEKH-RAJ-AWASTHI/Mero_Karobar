@@ -4,7 +4,39 @@
 <?php
     if(isset($_POST['submit']))
     {
+        if (!empty($_POST['date'])) {
+            $date = get_safe_value($con, $_POST['date']);
+        } else {
+            $date = date("Y-m-d");
+        }
+        $client_id=get_safe_value($con, $_POST['client']);
+        $particular=get_safe_value($con, $_POST['particular']);
+        $amount=get_safe_value($con, $_POST['amount']);
+
+        $sql="INSERT INTO voucher_bill SET
+                date='$date',
+                client_id='$client_id',
+                particular='$particular',
+                amount='$amount'
+                ";
+        $res=mysqli_query($con, $sql) or die(mysqli_error($con));
         
+        if($res)
+        {
+            $_SESSION['add']='
+        
+            <div id="add" class="alert alert-success" role="alert">
+            Transaction added successfully
+            
+            </div>';
+            header("location:".SITEURL."sites/invoices.php");
+        }
+
+        else
+        {
+            $_SESSION['add']="Failed to add transaction";
+            header("location:".SITEURL."sites/invoices.php");
+        }
     }
 ?>
 <div class="container-fluid d-flex justify-content-center mt-4 ">
@@ -32,12 +64,8 @@
         <div id="success-message" style="display: none;"></div>
 
         <div class="form-group">
-            <label for="particular">particular</label>
-            <textarea class="form-control" id="particular" rows="3" placeholder="Enter particular"></textarea>
-        </div>
-        <div class="form-group">
-            <label for="amount">Amount</label>
-            <input type="text" class="form-control" id="amount" placeholder="Enter amount">
+            <label for="particular">Particular</label>
+            <textarea class="form-control" name="particular" id="particular" rows="3" placeholder="Enter particular"></textarea>
         </div>
         <div class="container-fluid d-flex justify-content-center m-3">
             <input type="submit" name="submit" class="btn btn-primary">
@@ -45,4 +73,5 @@
     </form>
 </div>
 <script src="../js/bill-client.js"></script>
+
 <?php include('../partials/footer.inc.php'); ?>

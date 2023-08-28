@@ -14,7 +14,14 @@
             $enteredRates=$_POST['rate'];
             $enteredQuantities=$_POST['quantity'];
             // $amount=$rate*$quantity;
-            $client_id=get_safe_value($con, $_POST['client']);
+            if(!empty($_POST['client'])){
+                $client_id=get_safe_value($con, $_POST['client']);
+            }
+            else{
+                $client_id=0;
+            }            
+            $particular=get_safe_value($con, $_POST['particular']);
+
             /*
             ..............debugging values..............
             */
@@ -30,11 +37,14 @@
             // echo($amount);
             // echo("<br>");
             // echo($client_id);
+            // echo("<br>");
+            // echo($particular);
             // die();
 
             // purchase bill region
             $sql="INSERT INTO sales_bill SET
                     date='$date',
+                    particular='$particular',
                     client_id=$client_id
                     ";
             $res=mysqli_query($con, $sql) or die(mysqli_error($con));
@@ -55,10 +65,10 @@
                         quantity='$enteredQuantity',
                         sbid='$sbid'
                         ";
-                $res1=mysqli_query($con, $sql1) or die(mysqli_error($con));
+                $res1=mysqli_query($con, $sql1) or die(mysqli_error($con)); //insert data into transactional product table
                 //update Stock region
                 $sql2= "SELECT stock_level FROM stock WHERE product_id=$selectedProduct";
-                $res2= mysqli_query($con, $sql2) or die(mysqli_error($con));
+                $res2= mysqli_query($con, $sql2) or die(mysqli_error($con)); //updates stock
                 $row= mysqli_fetch_assoc($res2);
 
                 $stock_available=$row['stock_level'];
@@ -77,7 +87,7 @@
             
 
 
-            if($res && $resUpdateStock)
+            if($res && $resUpdateStock && $res1)
             {
                 $_SESSION['add']='
             
@@ -116,11 +126,15 @@
             <label for="pan-number">PAN Number</label>
             <input type="text" class="form-control" id="pan_number" placeholder="Enter PAN Number">
         </div>
+        <div class="form-group" id="panNumDiv">
+            <label for="particular">Particular</label>
+            <input type="text" class="form-control" id="particular" name="particular" placeholder="Enter Particular">
+        </div>
         <div id="error-message" style="display: none;"></div>
         <div id="success-message" style="display: none;"></div>
         <div class="row ">
 
-            <label class="col p-2" for="particular">Select Products</label>
+            <label class="col p-2" >Select Products</label>
             <img src="../images/plus-icon.png" style="width: 65px;" class="col-1" onclick="addProductField();">
         </div>
         <div class="product-info" id="product-info">

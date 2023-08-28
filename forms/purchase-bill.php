@@ -10,37 +10,56 @@
             } else {
                 $date = date("Y-m-d");
             }
+
             $selectedProducts=$_POST['product'];
             $enteredRates=$_POST['rate'];
             $enteredQuantities=$_POST['quantity'];
             // $amount=$rate*$quantity;
-            $client_id=get_safe_value($con, $_POST['client']);
+            if(!empty($_POST['client'])){
+                $client_id=get_safe_value($con, $_POST['client']);
+            }
+            else{
+                $client_id=0;
+            }
+            //calculating total amount
+            $amount=0;
+            for($i=0; $i<count($selectedProducts); $i++)
+            {
+                $amount+=$enteredQuantities[$i]* $enteredRates[$i];
+            }
+
+            $particular=get_safe_value($con, $_POST['particular']);
+
             /*
             ..............debugging values..............
             */
 
-            // echo($date);
-            // echo("<br>");
-            // pr($product_id);
-            // echo("<br>");
-            // pr($rate);
-            // echo("<br>");
-            // pr($quantity);
-            // echo("<br>");
-            // echo($amount);
-            // echo("<br>");
-            // echo($client_id);
-            // die();
+            echo($date);
+            echo("<br>");
+            pr($product_id);
+            echo("<br>");
+            pr($rate);
+            echo("<br>");
+            pr($quantity);
+            echo("<br>");
+            echo($amount);
+            echo("<br>");
+            echo($client_id);
+            echo("<br>");
+            echo($amount);
+            
+            die();
 
-            // purchase bill region
+            //.......... purchase bill region..........
             $sql="INSERT INTO purchase_bill SET
                     date='$date',
+                    particular='$particular',
                     client_id=$client_id
                     ";
             $res=mysqli_query($con, $sql) or die(mysqli_error($con));
-            //purchase bill region ends
+            //............purchase bill region ends............
 
-            // transactional product table entry starts
+            // .............transactional product table entry starts
             $pbid=mysqli_insert_id($con);
             for ($i = 0; $i < count($selectedProducts); $i++) {
                 $selectedProduct = $selectedProducts[$i]; //it is product id
@@ -48,7 +67,8 @@
                 $enteredQuantity= (float)$enteredQuantities[$i];
                 $amount= $enteredQuantity * $enteredRate;
 
-                //this sql contains sql command for inserting data into transactional product
+
+                //...........this sql contains sql command for inserting data into transactional product
                 $sql1= "INSERT INTO transactional_product SET 
                         pid='$selectedProduct',
                         rate='$enteredRate',
@@ -56,24 +76,26 @@
                         pbid='$pbid'
                         ";
                 $res1=mysqli_query($con, $sql1) or die(mysqli_error($con));
-                //update Stock region
+
+
+                //.............update Stock region
                 $sql2= "SELECT stock_level FROM stock WHERE product_id=$selectedProduct";
                 $res2= mysqli_query($con, $sql2) or die(mysqli_error($con));
                 $row= mysqli_fetch_assoc($res2);
 
                 $stock_available=$row['stock_level'];
                 $stock_remaining=$stock_available+$enteredQuantity;
-                // debugging stock
+                // ..........debugging stock
                 // echo $stock_remaining;
                 // die();
                 $sqlUpdateStock="UPDATE stock SET stock_level='$stock_remaining' WHERE product_id='$selectedProduct'";
                 $resUpdateStock=mysqli_query($con, $sqlUpdateStock) or die(mysqli_error($con));
-                //update stock region ends
+                //................update stock region ends
         
-                // Process $selectedProduct and $enteredRate
-                // For example, insert into a database, perform calculations, etc.
+                //............. Process $selectedProduct and $enteredRate
+                // .............For example, insert into a database, perform calculations, etc.
             }
-            //transactional product table entry starts
+            //..................transactional product table entry Ends                                                                                                                                        );
             
 
 
@@ -116,17 +138,21 @@
             <label for="pan-number">PAN Number</label>
             <input type="text" class="form-control" id="pan_number" placeholder="Enter PAN Number">
         </div>
+        <div class="form-group" id="panNumDiv">
+            <label for="particular">Particular</label>
+            <input type="text" class="form-control" id="particular" name="particular" placeholder="Enter Particular">
+        </div>
+
         <div id="error-message" style="display: none;"></div>
         <div id="success-message" style="display: none;"></div>
         <div class="row ">
-
-            <label class="col p-2" for="particular">Select Products</label>
+            <label class="col p-2">Select Products</label>
             <img src="../images/plus-icon.png" style="width: 65px;" class="col-1" onclick="addProductField();">
         </div>
         <div class="product-info" id="product-info">
             <div class="row border mt-1 mx-2 p-2 rounded">
                 <div class="col">
-                <label for="particular">Product</label>
+                <label for="product">Product</label>
                     <div class="form-group">                    
                         <select class="form-control" name="product[]" id="product">
         
@@ -150,8 +176,6 @@
             </div>
         </div>
 
-        
-        
         <div class="container-fluid d-flex justify-content-center m-3">
         <input type="submit" class="btn btn-primary" name="submit">
     </div>
