@@ -21,6 +21,7 @@
             else{
                 $client_id=0;
             }
+            $particular=get_safe_value($con, $_POST['particular']);
             //calculating total amount
             $amount=0;
             for($i=0; $i<count($selectedProducts); $i++)
@@ -28,32 +29,32 @@
                 $amount+=$enteredQuantities[$i]* $enteredRates[$i];
             }
 
-            $particular=get_safe_value($con, $_POST['particular']);
 
             /*
             ..............debugging values..............
             */
 
-            echo($date);
-            echo("<br>");
-            pr($product_id);
-            echo("<br>");
-            pr($rate);
-            echo("<br>");
-            pr($quantity);
-            echo("<br>");
-            echo($amount);
-            echo("<br>");
-            echo($client_id);
-            echo("<br>");
-            echo($amount);
+            // echo($date);
+            // echo("<br>");
+            // pr($product_id);
+            // echo("<br>");
+            // pr($rate);
+            // echo("<br>");
+            // pr($quantity);
+            // echo("<br>");
+            // echo($amount);
+            // echo("<br>");
+            // echo($client_id);
+            // echo("<br>");
+            // echo($amount);
             
-            die();
+            // die();
 
             //.......... purchase bill region..........
             $sql="INSERT INTO purchase_bill SET
                     date='$date',
                     particular='$particular',
+                    amount='$amount',
                     client_id=$client_id
                     ";
             $res=mysqli_query($con, $sql) or die(mysqli_error($con));
@@ -65,7 +66,6 @@
                 $selectedProduct = $selectedProducts[$i]; //it is product id
                 $enteredRate = (float)$enteredRates[$i];
                 $enteredQuantity= (float)$enteredQuantities[$i];
-                $amount= $enteredQuantity * $enteredRate;
 
 
                 //...........this sql contains sql command for inserting data into transactional product
@@ -99,7 +99,7 @@
             
 
 
-            if($res && $resUpdateStock)
+            if($res && $resUpdateStock && $res2)
             {
                 $_SESSION['add']='
             
@@ -120,7 +120,7 @@
 <div class="container-fluid d-flex justify-content-center mt-4 ">
     <h2>Purchase Bill</h2>
 </div>
-<div class="container" id="bill_form">
+<div class="container mb-5" id="bill_form">
     <form action="" method="POST">
         <div class="form-group">
             <label for="date">Date</label>
@@ -147,7 +147,7 @@
         <div id="success-message" style="display: none;"></div>
         <div class="row ">
             <label class="col p-2">Select Products</label>
-            <img src="../images/plus-icon.png" style="width: 65px;" class="col-1" onclick="addProductField();">
+            <img src="../images/plus-icon.png" style="width: 65px;" class="col-1" style="cursor: pointer;" onclick="addProductField();">
         </div>
         <div class="product-info" id="product-info">
             <div class="row border mt-1 mx-2 p-2 rounded">
@@ -157,7 +157,6 @@
                         <select class="form-control" name="product[]" id="product">
         
                         </select>
-        
                     </div>
                 </div>  
                 <div class="col">

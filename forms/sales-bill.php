@@ -21,6 +21,11 @@
                 $client_id=0;
             }            
             $particular=get_safe_value($con, $_POST['particular']);
+            $amount=0;
+            for($i=0; $i<count($selectedProducts); $i++)
+            {
+                $amount+=$enteredQuantities[$i]* $enteredRates[$i];
+            }
 
             /*
             ..............debugging values..............
@@ -45,6 +50,7 @@
             $sql="INSERT INTO sales_bill SET
                     date='$date',
                     particular='$particular',
+                    amount='$amount',
                     client_id=$client_id
                     ";
             $res=mysqli_query($con, $sql) or die(mysqli_error($con));
@@ -56,7 +62,6 @@
                 $selectedProduct = $selectedProducts[$i]; //it is product id
                 $enteredRate = (float)$enteredRates[$i];
                 $enteredQuantity= (float)$enteredQuantities[$i];
-                $amount= $enteredQuantity * $enteredRate;
 
                 //this sql contains sql command for inserting data into transactional product
                 $sql1= "INSERT INTO transactional_product SET 
@@ -108,7 +113,7 @@
 <div class="container-fluid d-flex justify-content-center mt-4 ">
     <h2>Sales Bill</h2>
 </div>
-<div class="container" id="bill_form">
+<div class="container mb-5" id="bill_form">
     <form action="" method="POST">
         <div class="form-group">
             <label for="date">Date</label>

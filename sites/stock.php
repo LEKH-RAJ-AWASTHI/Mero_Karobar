@@ -52,7 +52,17 @@
                         <td>  
                             <input type="hidden" name="id" value="<?php echo $id; ?>">
                             <!-- the above line contains last product id when submit is clicked because of the loop  -->
-                            <label for=""><?php echo $rows_stock['stock_level'] ?></label>
+                            <label for=""><?php 
+                            if($rows_stock['stock_level']>0)
+                            {
+                                echo $rows_stock['stock_level']; ?></label>   
+                            <?php                         }
+                            else
+                            {
+                                echo 0;
+                            }
+                            ?>
+                            
                         </td>
                     </tr>      
                 <?php
