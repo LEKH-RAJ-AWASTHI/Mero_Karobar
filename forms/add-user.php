@@ -113,7 +113,7 @@ if(isset($_POST['submit']))
     <form action="" method="POST">
         <div class="form-group">
             <label for="username">Username</label>
-            <input type="username" class="form-control" name="username" id="username" pattern="[a-zA-Z0-9]+" placeholder="Enter username eg: abc123" required>
+            <input type="text" class="form-control" name="username" id="username" pattern="[a-zA-Z0-9]+" placeholder="Enter username eg: abc123" required>
         </div>
 
         <div class="form-group" id="password-group">

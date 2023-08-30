@@ -129,14 +129,14 @@
         <div class="form-group" >
             <label for="client">Client</label>
             
-            <select class="form-control" name="client" id="client">
+            <select class="form-control" name="client" id="client" onkeydown="return false" onkeypress="return false" required>
 
             </select>
 
         </div>
         <div class="form-group" id="panNumDiv">
             <label for="pan-number">PAN Number</label>
-            <input type="text" class="form-control" id="pan_number" placeholder="Enter PAN Number">
+            <input type="number" class="form-control" id="pan_number" placeholder="Enter PAN Number" required>
         </div>
         <div class="form-group" id="panNumDiv">
             <label for="particular">Particular</label>
@@ -147,14 +147,14 @@
         <div id="success-message" style="display: none;"></div>
         <div class="row ">
             <label class="col p-2">Select Products</label>
-            <img src="../images/plus-icon.png" style="width: 65px;" class="col-1" style="cursor: pointer;" onclick="addProductField();">
+            <img src="../images/plus-icon.png" style="width: 65px; cursor: pointer;" class="col-1" onclick="addProductField();">
         </div>
         <div class="product-info" id="product-info">
             <div class="row border mt-1 mx-2 p-2 rounded">
                 <div class="col">
                 <label for="product">Product</label>
                     <div class="form-group">                    
-                        <select class="form-control" name="product[]" id="product">
+                        <select class="form-control" name="product[]" id="product" required>
         
                         </select>
                     </div>
@@ -162,14 +162,14 @@
                 <div class="col">
                     <div class="form-group">
                         <label for="rate">Rate</label>
-                        <input type="text" class="form-control" name="rate[]" id="rate" placeholder="Enter Rate">
+                        <input type="text" class="form-control" name="rate[]" id="rate" placeholder="Enter Rate" required>
         
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group">
                         <label for="quantity">Quantity</label>
-                        <input type="text" class="form-control" name="quantity[]" id="quantity" placeholder="Enter Quantity">
+                        <input type="text" class="form-control" name="quantity[]" id="quantity" placeholder="Enter Quantity" required>
                     </div>
                 </div>
             </div>
@@ -195,20 +195,20 @@
                 <div class="col">
                     <label for="particular">Product</label>
                     <div class="form-group">                    
-                        <select class="form-control" name="product[]" onchange="updateRate(${productNo})" id="product${productNo}">
+                        <select class="form-control" name="product[]" onchange="updateRate(${productNo})" id="product${productNo}" required>
                         </select>
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group">
                         <label for="rate">Rate</label>
-                        <input type="text" class="form-control" name="rate[]" id="rate${productNo}" placeholder="Enter Rate">
+                        <input type="text" class="form-control" name="rate[]" id="rate${productNo}" placeholder="Enter Rate" required>
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group">
                         <label for="quantity">Quantity</label>
-                        <input type="text" class="form-control" name="quantity[]" id="quantity" placeholder="Enter Quantity">
+                        <input type="text" class="form-control" name="quantity[]" id="quantity" placeholder="Enter Quantity" required>
                     </div>
                 </div>
             </div>

@@ -81,19 +81,19 @@
     <form action="" method="POST">
         <div class="form-group">
             <label for="product_name">Product Name</label>
-            <input type="text" class="form-control" id="product_name" name="product_name" placeholder="Enter Product Name">
+            <input type="text" class="form-control" id="product_name" name="product_name" placeholder="Enter Product Name" required>
         </div>
         <div class="form-group">
             <label for="purchase_price">Purchase Price</label>
-            <input type="text" class="form-control" id="purchase_price" name="purchase_price" placeholder="Enter Product purchase price">
+            <input type="number" class="form-control" id="purchase_price" name="purchase_price" placeholder="Enter Product purchase price" required>
         </div>
         <div class="form-group">
             <label for="sales_price">Sales Price</label>
-            <input type="text" class="form-control" id="product_name" name="sales_price" placeholder="Enter Product sales price">
+            <input type="number" class="form-control" id="product_name" name="sales_price" placeholder="Enter Product sales price" required>
         </div>
         <div class="form-group">
             <label for="stock">Stock</label>
-            <input type="text" class="form-control" id="stock" name="stock" placeholder="Enter Stock Available in KG">
+            <input type="number" class="form-control" id="stock" name="stock" placeholder="Enter Stock Available in KG" required>
         </div>
         <div class="container-fluid d-flex justify-content-center m-3">
             <input type="submit" value="Add Product" name="submit" class="btn btn-primary"></input>

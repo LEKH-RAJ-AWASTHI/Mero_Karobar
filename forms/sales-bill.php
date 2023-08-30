@@ -122,7 +122,7 @@
         <div class="form-group" >
             <label for="client">Client</label>
             
-            <select class="form-control" name="client" id="client">
+            <select class="form-control" name="client" id="client" required>
 
             </select>
 
@@ -133,7 +133,7 @@
         </div>
         <div class="form-group" id="panNumDiv">
             <label for="particular">Particular</label>
-            <input type="text" class="form-control" id="particular" name="particular" placeholder="Enter Particular">
+            <input type="text" class="form-control" id="particular" name="particular" placeholder="Enter Particular"required>
         </div>
         <div id="error-message" style="display: none;"></div>
         <div id="success-message" style="display: none;"></div>
@@ -147,7 +147,7 @@
                 <div class="col">
                 <label for="particular">Product</label>
                     <div class="form-group">                    
-                        <select class="form-control" name="product[]" id="product">
+                        <select class="form-control" name="product[]" id="product"required>
         
                         </select>
         
@@ -156,14 +156,14 @@
                 <div class="col">
                     <div class="form-group">
                         <label for="rate">Rate</label>
-                        <input type="text" class="form-control" name="rate[]" id="rate" placeholder="Enter Rate">
+                        <input type="text" class="form-control" name="rate[]" id="rate" placeholder="Enter Rate"required>
         
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group">
                         <label for="quantity">Quantity</label>
-                        <input type="text" class="form-control" name="quantity[]" id="quantity" placeholder="Enter Quantity">
+                        <input type="text" class="form-control" name="quantity[]" id="quantity" placeholder="Enter Quantity"required>
                     </div>
                 </div>
             </div>
@@ -191,20 +191,20 @@
                 <div class="col">
                     <label for="particular">Product</label>
                     <div class="form-group">                    
-                        <select class="form-control" name="product[]" onchange="updateRate(${productNo})" id="product${productNo}">
+                        <select class="form-control" name="product[]" onchange="updateRate(${productNo})" id="product${productNo}" required>
                         </select>
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group">
                         <label for="rate">Rate</label>
-                        <input type="text" class="form-control" name="rate[]" id="rate${productNo}" placeholder="Enter Rate">
+                        <input type="text" class="form-control" name="rate[]" id="rate${productNo}" placeholder="Enter Rate" required>
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group">
                         <label for="quantity">Quantity</label>
-                        <input type="text" class="form-control" name="quantity[]" id="quantity" placeholder="Enter Quantity">
+                        <input type="text" class="form-control" name="quantity[]" id="quantity" placeholder="Enter Quantity" required>
                     </div>
                 </div>
             </div>

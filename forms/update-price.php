@@ -97,12 +97,12 @@ $sn=0;
                             <label for="name"><?php echo $name;?></label>
                         </td>
                         <td>  
-                            <input type="hidden" name="id" value="<?php echo $id; ?>">
+                            <input type="hidden" name="id" value="<?php echo $id; ?>" required>
                             <!-- the above line contains last product id when submit is clicked because of the loop  -->
-                            <input type="number" class="form-control" id="name" name="product_purchase_price_<?php echo $id;?>" placeholder="Enter Purchase Price" value="<?php echo $rows_curr_price['purchase_price']?>">
+                            <input type="number" class="form-control" id="name" name="product_purchase_price_<?php echo $id;?>" placeholder="Enter Purchase Price" value="<?php echo $rows_curr_price['purchase_price']?>" required>
                         </td>
                         <td>
-                            <input type="number" class="form-control" id="name" name="product_sales_price_<?php echo $id;?>" placeholder="Enter Sales Price" value="<?php echo $rows_curr_price['sales_price']?>">
+                            <input type="number" class="form-control" id="name" name="product_sales_price_<?php echo $id;?>" placeholder="Enter Sales Price" value="<?php echo $rows_curr_price['sales_price']?>" required>
                         </td> 
                     </tr>      
                 <?php

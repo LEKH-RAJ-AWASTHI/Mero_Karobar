@@ -156,7 +156,7 @@
         </div>
         <div class="form-group">
             <label for="PAN-Number">PAN-Number</label>
-            <input type="text" class="form-control" id="PAN-Number" name="PAN_Number" placeholder="Enter PAN-Number" >
+            <input type="number" class="form-control" id="PAN-Number" name="PAN_Number" placeholder="Enter PAN-Number" >
         </div>
         <div class="form-group">
             <label for="email">Email</label>
@@ -164,7 +164,7 @@
         </div>
         <div class="form-group">
             <label for="phone-number">Phone Number</label>
-            <input type="text" class="form-control" id="phone-number" name="phone_number" placeholder="Enter phone-number" required>
+            <input type="number" class="form-control" id="phone-number" name="phone_number" placeholder="Enter phone-number" required>
         </div>
         <div class="form-group">
             <label for="image">Image</label>

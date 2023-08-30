@@ -189,11 +189,11 @@
         <div class="form-group">
             <label for="name">Name</label>
             <input type="hidden" name="id" value="<?php echo $id;?>">
-            <input type="text" class="form-control" id="name" name="name" value="<?php echo $name;?>"  placeholder="Enter Name">
+            <input type="text" class="form-control" id="name" name="name" value="<?php echo $name;?>"  placeholder="Enter Name" required>
         </div>
         <div class="form-group">
             <label for="firm">Firm Name</label>
-            <input type="text" class="form-control" id="firm" name="firm_name" value="<?php echo $firm_name;?>"  placeholder="Enter Name">
+            <input type="text" class="form-control" id="firm" name="firm_name" value="<?php echo $firm_name;?>"  placeholder="Enter Name" required>
         </div>
         <label for="address">Address</label>"
         <div class="row border m-2 p-2 rounded">
@@ -201,7 +201,7 @@
 
     
                 <label for="state" class="form-label">Province:</label>
-                <input class="form-control" list="states" name="province" value="<?php echo $province;?>" id="state" oninput="populateDistricts()">
+                <input class="form-control" list="states" name="province" value="<?php echo $province;?>" id="state" oninput="populateDistricts()" onkeydown="return false" onkeypress="return false">
                 <datalist id="states">
                     <option value="">Select a state</option>
                     <option value="Koshi"></option>
@@ -217,7 +217,7 @@
             <div class="col">
     
                 <label for="district" class="form-label">District:</label>
-                <input class="form-control" list="districts" name="district" value="<?php echo $district;?>" id="district">
+                <input class="form-control" list="districts" name="district" value="<?php echo $district;?>" id="district" onkeydown="return false" onkeypress="return false">
                 <datalist id="districts">
                     <option value="">Select a district</option>
     
@@ -239,7 +239,7 @@
         </div>
         <div class="form-group">
             <label for="phone-number">Phone-Number</label>
-            <input type="text" class="form-control" id="phone-number" name="phone_number" value="<?php echo $phone_number;?>"  placeholder="Enter phone-number">
+            <input type="text" class="form-control" id="phone-number" name="phone_number" value="<?php echo $phone_number;?>"  placeholder="Enter phone-number" required>
     
         </div>
 

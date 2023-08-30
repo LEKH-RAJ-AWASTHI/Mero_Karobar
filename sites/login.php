@@ -73,12 +73,12 @@ if (isset($_POST['submit'])) {
                       <div class="form-outline mb-4">
                         <label class="form-label" for="form2Example11">Username</label>
                         <input type="text" id="form2Example11" name="username" class="form-control"
-                          placeholder="Phone number or email address" />
+                          placeholder="Enter Username"  required/>
                       </div>
 
                       <div class="form-outline mb-4">
                         <label class="form-label" for="form2Example22">Password</label>
-                        <input type="password" name="password" id="form2Example22" class="form-control" />
+                        <input type="password" name="password" id="form2Example22" class="form-control" required />
                       </div>
 
                       <div class="text-center pt-1 mb-5 pb-1">

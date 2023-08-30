@@ -98,14 +98,14 @@
         <div class="form-group">
             <label for="particular">Client</label>
 
-            <select class="form-control" name="client" id="client">
+            <select class="form-control" name="client" id="client" required>
 
             </select>
 
         </div>
         <div class="form-group" id="panNumDiv">
             <label for="pan-number">PAN Number</label>
-            <input type="text" class="form-control" id="pan_number" placeholder="Enter PAN Number">
+            <input type="text" class="form-control" id="pan_number" placeholder="Enter PAN Number" required>
         </div>
         <div id="error-message" style="display: none;"></div>
         <div id="success-message" style="display: none;"></div>
@@ -113,13 +113,13 @@
         <div class="form-group">
             <label for="particular">particular</label>
             <textarea class="form-control" name="particular" id="particular" rows="3"
-                placeholder="Enter particular"></textarea>
+                placeholder="Enter particular" required></textarea>
         </div>
         <div class="form-group">
             <label for="amount" id="amtLbl">Amount</label>
             <div class="row">
                 <div class="col p-1">
-                    <input type="number" class="form-control" name="amount" id="amount" placeholder="Enter amount">
+                    <input type="number" class="form-control" name="amount" id="amount" placeholder="Enter amount" required>
                 </div>
                 <div class="col-4 p-1">
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
