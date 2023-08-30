@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Client Account</title>
-    <style>
-        .body {
+.body {
             font-family: Arial, sans-serif;
             background-color: #f2f2f2;
             margin: 0;
@@ -13,7 +6,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
         }
         .client-card {
             background-color: white;
@@ -43,21 +35,3 @@
             font-size: 14px;
             margin: 10px 0;
         }
-    </style>
-</head>
-<body>
-    <div class="body">
-        <div class="client-card">
-            <img class="client-image" src="client-image.jpg" alt="Client Image">
-            <div class="client-name">John Doe</div>
-            <div class="firm-name">Doe Enterprises</div>
-            <div class="client-details">
-                <p><strong>Address:</strong> 123 Main Street, City</p>
-                <p><strong>PAN Number:</strong> ABCDE1234F</p>
-                <p><strong>Contact:</strong> +1234567890</p>
-                <p><strong>Email:</strong> john.doe@example.com</p>
-            </div>
-        </div>
-    </div>
-</body>
-</html>

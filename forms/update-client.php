@@ -126,11 +126,11 @@
                         $_SESSION['remove']='
     
                         <div id="delete" class="alert alert-danger" role="alert">
-                            Failed to remove food
+                            Failed to remove Client
                         
                         </div>
                         ';
-                        header("location:".SITEURL."admin/manage-food.php");
+                        header("location:".SITEURL."sites/customer.php");
                         die();
                     }
                 }

@@ -9,37 +9,7 @@
     unset($_SESSION['add']);
  }
  ?>
-
-<div class="container-fluid d-flex justify-content-center mt-4 ">
-        <h2>Add Product</h2>
-    </div>
-
-<div class="container border border-warning border-3 rounded p-5 my-3">
-
-    <form action="" method="POST">
-        <div class="form-group">
-            <label for="product_name">Product Name</label>
-            <input type="text" class="form-control" id="product_name" name="product_name" placeholder="Enter Product Name">
-        </div>
-        <div class="form-group">
-            <label for="purchase_price">Purchase Price</label>
-            <input type="text" class="form-control" id="purchase_price" name="purchase_price" placeholder="Enter Product purchase price">
-        </div>
-        <div class="form-group">
-            <label for="sales_price">Sales Price</label>
-            <input type="text" class="form-control" id="product_name" name="sales_price" placeholder="Enter Product sales price">
-        </div>
-        <div class="form-group">
-            <label for="stock">Stock</label>
-            <input type="text" class="form-control" id="stock" name="stock" placeholder="Enter Stock Available in KG">
-        </div>
-        <div class="container-fluid d-flex justify-content-center m-3">
-            <input type="submit" value="Add Product" name="submit" class="btn btn-primary"></input>
-        </div>
-    </form>
-</div>
-
-<?php 
+ <?php 
    //updating price of product\
    if(isset($_POST['submit']))
    {
@@ -57,7 +27,7 @@
     
 
         $sql="INSERT INTO product (product_name) VALUES('$product_name')";
-        $res=mysqli_query($con,$sql) or die(mysqli_error());
+        $res=mysqli_query($con,$sql) or die(mysqli_error($con));
         if($res)
         {
             $product_id=mysqli_insert_id($con);
@@ -94,11 +64,43 @@
                     </div>
                     ';  
                     header("location:".SITEURL."forms/add-product.php");
+                    die();
 
                 }
             }
         }
     }
 ?>
+
+<div class="container-fluid d-flex justify-content-center mt-4 ">
+        <h2>Add Product</h2>
+    </div>
+
+<div class="container border border-warning border-3 rounded p-5 my-3 mb-5">
+
+    <form action="" method="POST">
+        <div class="form-group">
+            <label for="product_name">Product Name</label>
+            <input type="text" class="form-control" id="product_name" name="product_name" placeholder="Enter Product Name">
+        </div>
+        <div class="form-group">
+            <label for="purchase_price">Purchase Price</label>
+            <input type="text" class="form-control" id="purchase_price" name="purchase_price" placeholder="Enter Product purchase price">
+        </div>
+        <div class="form-group">
+            <label for="sales_price">Sales Price</label>
+            <input type="text" class="form-control" id="product_name" name="sales_price" placeholder="Enter Product sales price">
+        </div>
+        <div class="form-group">
+            <label for="stock">Stock</label>
+            <input type="text" class="form-control" id="stock" name="stock" placeholder="Enter Stock Available in KG">
+        </div>
+        <div class="container-fluid d-flex justify-content-center m-3">
+            <input type="submit" value="Add Product" name="submit" class="btn btn-primary"></input>
+        </div>
+    </form>
+</div>
+
+
 
 <?php include('../partials/footer.inc.php'); ?>

@@ -120,17 +120,17 @@
     <form action="" method="POST" enctype="multipart/form-data">
         <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name">
+            <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name" required>
         </div>
         <div class="form-group">
             <label for="firm">Firm Name</label>
-            <input type="text" class="form-control" id="firm" name="firm" placeholder="Enter Name">
+            <input type="text" class="form-control" id="firm" name="firm" placeholder="Enter Name" >
         </div>
         <label for="address">Address</label>
         <div class="row border m-2 p-2 rounded">
             <div class="col">
                 <label for="state" class="form-label">Province:</label>
-                <input class="form-control" list="states" name="province" id="state" oninput="populateDistricts()">
+                <input class="form-control" list="states" name="province" id="state" oninput="populateDistricts()"  onkeydown="return false" onkeypress="return false">
                 <datalist id="states">
                     <option value="">Select a state</option>
                     <option value="Koshi"></option>
@@ -144,27 +144,27 @@
             </div>
             <div class="col">
                 <label for="district" class="form-label">District:</label>
-                <input class="form-control" list="districts" name="district" id="district">
+                <input class="form-control" list="districts" name="district" id="district"  onkeydown="return false" onkeypress="return false">
                 <datalist id="districts">
                     <option value="">Select a district</option>
                 </datalist>
             </div>
             <div class="col">
                 <label for="city" class="form-label">City:</label>
-                <input class="form-control" name="city" id="city">
+                <input class="form-control" name="city" id="city" >
             </div>
         </div>
         <div class="form-group">
             <label for="PAN-Number">PAN-Number</label>
-            <input type="text" class="form-control" id="PAN-Number" name="PAN_Number" placeholder="Enter PAN-Number">
+            <input type="text" class="form-control" id="PAN-Number" name="PAN_Number" placeholder="Enter PAN-Number" >
         </div>
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email">
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email" >
         </div>
         <div class="form-group">
             <label for="phone-number">Phone Number</label>
-            <input type="text" class="form-control" id="phone-number" name="phone_number" placeholder="Enter phone-number">
+            <input type="text" class="form-control" id="phone-number" name="phone_number" placeholder="Enter phone-number" required>
         </div>
         <div class="form-group">
             <label for="image">Image</label>

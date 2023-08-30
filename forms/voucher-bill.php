@@ -19,7 +19,7 @@
                 particular='$particular',
                 amount='$amount'
                 ";
-        $res=mysqli_query($con, $sql) or die(mysqli_error($con));
+        $res=mysqli_query($con, $sql) or die(mysqli_error($con)." of insert voucher bill");
         
         if($res)
         {
@@ -66,6 +66,10 @@
         <div class="form-group">
             <label for="particular">Particular</label>
             <textarea class="form-control" name="particular" id="particular" rows="3" placeholder="Enter particular"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="amount">Amount</label>
+            <input class="form-control" type="number" name="amount" id="amount" placeholder="Enter Amount"></input>
         </div>
         <div class="container-fluid d-flex justify-content-center m-3">
             <input type="submit" name="submit" class="btn btn-primary">

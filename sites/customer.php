@@ -52,7 +52,7 @@
             <input style="width: 800px" class="p-2" type="search" name="" id="">
             <button class="p-2 px-5" type="submit">Search</button>
         </div> -->
-        <div class="container"> 
+        <div class="container mb-5"> 
 
 
             <table class="table table-bordered">
@@ -137,9 +137,9 @@
                             </td>
 
                             <td>
-                                <a href="<?php echo SITEURL; ?>forms/update-client.php?id=<?php echo $id ?>&image_name=<?php echo $image_name?>" class="btn btn-secondary">View</a>
-                                <a href="<?php echo SITEURL; ?>forms/update-client.php?id=<?php echo $id ?>&image_name=<?php echo $image_name?>" class="btn btn-secondary">Update</a>
-                                <a href="<?php echo SITEURL; ?>forms/delete-client.php?id=<?php echo $id ?>&image_name=<?php echo $image_name?>" class="btn btn-danger">Remove Client</a>
+                                <a style="width: 100%" href="<?php echo SITEURL; ?>forms/customer-view.php?id=<?php echo $id ?>&image_name=<?php echo $image_name?>" class="btn btn-info btn-sm m-1">View</a>
+                                <a style="width: 100%" href="<?php echo SITEURL; ?>forms/update-client.php?id=<?php echo $id ?>&image_name=<?php echo $image_name?>" class="btn btn-secondary btn-sm m-1">Update</a>
+                                <a style="width: 100%" href="<?php echo SITEURL; ?>forms/delete-client.php?id=<?php echo $id ?>&image_name=<?php echo $image_name?>" class="btn btn-danger btn-sm m-1" onclick="remove_client()">Remove Client</a>
                             </td>
                          </tr>
                             <?php 
@@ -189,6 +189,9 @@
                     districtSelect.appendChild(option);
                 }
             }
+        }
+        remove_client(){
+            alert("Are you sure you want to remove this client?");
         }
     </script>
 

@@ -5,10 +5,35 @@
         echo $_SESSION['update']; //Displaying session message
         unset($_SESSION['update']); //removing session message
       }
+    if(isset($_SESSION['add'])){
+        echo $_SESSION['add']; //Displaying session message
+        unset($_SESSION['add']); //removing session message
+      }
+    if(isset($_SESSION['update'])){
+        echo $_SESSION['update']; //Displaying session message
+        unset($_SESSION['update']); //removing session message
+      }
+    if(isset($_SESSION['update'])){
+        echo $_SESSION['update']; //Displaying session message
+        unset($_SESSION['update']); //removing session message
+      }
+    if(isset($_SESSION['login'])){
+        echo $_SESSION['login']; //Displaying session message
+        unset($_SESSION['login']); //removing session message
+      }
+      
+      
+      
 ?>
-
-    <div class="body">
-
+        <div class="body">
+            <div style="width: 100%" class="clearfix">
+                <div class=" float-end m-2">
+                    <a href="../forms/add-user.php" class="btn btn-primary">Add User</a>
+                </div>
+            </div>
+            
+        </div>
+    <div class="body mb-5">
         <div class="container mt-3">
             <h2 class="mt-5 pt-5">Dashboard</h2>
 

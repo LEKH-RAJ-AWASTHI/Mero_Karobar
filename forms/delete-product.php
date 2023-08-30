@@ -1,17 +1,14 @@
 <?php
-
-    require('../config/connection.inc.php');
+    require('../partials/header.inc.php');
     //1. get the id of product to be deleted
     $id=$_GET['id'];
     // echo $id;
     //2. execute the query to delete
-    $sqlStock="DELETE FROM stock WHERE product_id=$id";
-    $sqlPrice="DELETE FROM price WHERE product_id=$id";
+
     $sql="DELETE FROM product WHERE product_id=$id";
-    $resStock=mysqli_query($con, $sqlStock);
-    $resPrice=mysqli_query($con, $sqlPrice);
+
     $res= mysqli_query($con, $sql);
-    if($res && $resPrice && $resStock){
+    if($res){
         // echo "product deleted succesfully";
         // create session variable to display message
         $_SESSION['delete']='
