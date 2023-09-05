@@ -162,7 +162,7 @@
                 <div class="col">
                     <div class="form-group">
                         <label for="rate">Rate</label>
-                        <input type="text" class="form-control" name="rate[]" id="rate" placeholder="Enter Rate" required>
+                        <input type="number" class="form-control" name="rate[]" id="rate" placeholder="Enter Rate" required>
         
                     </div>
                 </div>

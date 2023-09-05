@@ -2,7 +2,7 @@
 include('../config/connection.inc.php');
 include('../config/functions.inc.php');
 
-error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
+// error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
 
 ?>
 <?php
@@ -59,8 +59,12 @@ include('../partials/login-check.inc.php');
                         <img src="../images/client/profile-dummy.jpg" class="rounded-circle mx-2" width="50px"
                             alt="user_img" srcset="">
                         <div class="btn-group btn-group-md">
-                           <button type="button" class="btn btn-primary text-font-monospace"><?php echo $_SESSION['user']?></button>
-                            <button type="button" class="btn btn-danger p-0"><a href="<?php echo SITEURL;?>partials/logout.php" class="p-2"><img width="30px" src="../images/logout_img.png"></a></button>
+                            <button type="button" class="btn btn-primary text-font-monospace">
+                                <?php echo $_SESSION['user']; ?>
+                            </button>
+                            <button type="button" class="btn btn-danger p-0"><a
+                                    href="<?php echo SITEURL; ?>partials/logout.php" class="p-2"><img width="30px"
+                                        src="../images/logout_img.png"></a></button>
                         </div>
                     </div>
                 </div>

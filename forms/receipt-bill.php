@@ -1,6 +1,44 @@
 <?php
     include("../partials/header.inc.php");
 ?>
+<?php
+    if(isset($_POST['submit']))
+    {
+        if (!empty($_POST['date'])) {
+            $date = get_safe_value($con, $_POST['date']);
+        } else {
+            $date = date("Y-m-d");
+        }
+        $client_id=get_safe_value($con, $_POST['client']);
+        $particular=get_safe_value($con, $_POST['particular']);
+        $amount=get_safe_value($con, $_POST['amount']);
+
+        $sql="INSERT INTO receipt_bill SET
+                date='$date',
+                client_id='$client_id',
+                particular='$particular',
+                amount='$amount'
+                ";
+        $res=mysqli_query($con, $sql) or die(mysqli_error($con));
+        
+        if($res)
+        {
+            $_SESSION['add']='
+        
+            <div id="add" class="alert alert-success" role="alert">
+            Transaction added successfully
+            
+            </div>';
+            header("location:".SITEURL."sites/invoices.php");
+        }
+
+        else
+        {
+            $_SESSION['add']="Failed to add transaction";
+            header("location:".SITEURL."sites/invoices.php");
+        }
+    }
+?>
 <!-- ..........Interest Calculation............ Form -->
 <div class="modal" id="myModal">
     <div class="modal-dialog">
@@ -48,44 +86,7 @@
     </div>
 </div>
 <!-- .............END OF INTEREST CALCULATION SECTION....................-->
-<?php
-    if(isset($_POST['submit']))
-    {
-        if (!empty($_POST['date'])) {
-            $date = get_safe_value($con, $_POST['date']);
-        } else {
-            $date = date("Y-m-d");
-        }
-        $client_id=get_safe_value($con, $_POST['client']);
-        $particular=get_safe_value($con, $_POST['particular']);
-        $amount=get_safe_value($con, $_POST['amount']);
 
-        $sql="INSERT INTO receipt_bill SET
-                date='$date',
-                client_id='$client_id',
-                particular='$particular',
-                amount='$amount'
-                ";
-        $res=mysqli_query($con, $sql) or die(mysqli_error($con));
-        
-        if($res)
-        {
-            $_SESSION['add']='
-        
-            <div id="add" class="alert alert-success" role="alert">
-            Transaction added successfully
-            
-            </div>';
-            header("location:".SITEURL."sites/invoices.php");
-        }
-
-        else
-        {
-            $_SESSION['add']="Failed to add transaction";
-            header("location:".SITEURL."sites/invoices.php");
-        }
-    }
-?>
 <div class="container-fluid d-flex justify-content-center mt-4 ">
     <h2>Receipt Bill</h2>
 </div>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase Bill Print</title>
+    <!-- Include any necessary CSS styles here -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="text-center mt-4">
+            <!-- Shop Title -->
+            <h1>My Shop Name</h1>
+            <!-- Shop Address -->
+            <p>123 Main Street, City, Country</p>
+            <!-- Purchase Bill Title -->
+            <h2>Purchase Bill</h2>
+        </div>
+        <div class="mt-5">
+            <h4>Date: [Insert Date]</h4>
+            <h4>Client: [Insert Client Name]</h4>
+            <h4>PAN Number: [Insert PAN Number]</h4>
+            <h4>Particular: [Insert Particular]</h4>
+        </div>
+        <div class="mt-4">
+            <h4>Select Products:</h4>
+            <!-- You can loop through the selected products and display them here -->
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Rate</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Loop through selected products and generate rows -->
+                    <tr>
+                        <td>[Product 1 Name]</td>
+                        <td>[Product 1 Rate]</td>
+                        <td>[Product 1 Quantity]</td>
+                    </tr>
+                    <!-- Repeat the above row structure for each product -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Include any additional styling or JavaScript for printing, if needed -->
+    <style>
+        /* Define styles for the printed page */
+        @media print {
+            /* Add styles for hiding unnecessary elements on the printed page */
+            body * {
+                visibility: hidden;
+            }
+            .container, .container * {
+                visibility: visible;
+            }
+            /* Ensure that the shop title and address are printed */
+            .container .text-center h1,
+            .container .text-center p {
+                visibility: visible;
+            }
+        }
+    </style>
+
+    <!-- Include jQuery and JavaScript for printing -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Add a print button that triggers the print dialog
+            $("#printButton").on("click", function () {
+                window.print();
+            });
+        });
+    </script>
+
+    <!-- Print button -->
+    <div class="container mt-4 text-center">
+        <button id="printButton" class="btn btn-primary">Print</button>
+    </div>
+</body>
+</html>

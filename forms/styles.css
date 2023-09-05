@@ -1,0 +1,84 @@
+    /* Reset some default styles for better printing */
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    /* Main container styles */
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Shop title styles */
+    .container h1 {
+        font-size: 24px;
+        margin: 0;
+        color: #333;
+    }
+
+    /* Shop address styles */
+    .container p {
+        font-size: 16px;
+        margin-top: 5px;
+        color: #555;
+    }
+
+    /* Purchase Bill title styles */
+    .container h2 {
+        font-size: 32px;
+        margin-top: 20px;
+        color: #333;
+    }
+
+    /* Section headers */
+    .container h4 {
+        font-size: 18px;
+        margin-top: 20px;
+        color: #333;
+    }
+
+    /* Table styles */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+    }
+
+    table th, table td {
+        border: 1px solid #ccc;
+        padding: 10px;
+        text-align: left;
+    }
+
+    /* Print button styles */
+    #printButton {
+        display: none;
+    }
+
+    /* Define styles for the printed page */
+    @media print {
+        /* Hide print button and apply other print-specific styles */
+        #printButton {
+            display: none;
+        }
+
+        .container {
+            margin: 0;
+            border: none;
+            box-shadow: none;
+        }
+
+        /* Ensure that the shop title and address are printed */
+        .container .text-center h1,
+        .container .text-center p {
+            visibility: visible;
+        }
+    }
+

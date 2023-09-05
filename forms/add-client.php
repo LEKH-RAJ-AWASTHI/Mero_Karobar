@@ -1,15 +1,9 @@
 <?php
     include("../partials/header.inc.php");    
 ?>
-<div class="container-fluid d-flex justify-content-center mt-4 ">
-        <h2>Add Client</h2>
-    </div>
-    <?php
+<?php
     if(isset($_POST['submit']))
     {
-         
-        // echo "clicked";
-        // get the values from form
         $name=get_safe_value($con,$_POST['name']);
         $firm=get_safe_value($con,$_POST['firm']);
         $province=get_safe_value($con,$_POST['province']);
@@ -116,6 +110,9 @@
         }
     }
 ?>
+<div class="container-fluid d-flex justify-content-center mt-4 ">
+        <h2>Add Client</h2>
+    </div>
 <div class="container border border-warning border-3 rounded p-5 my-3">
     <form action="" method="POST" enctype="multipart/form-data">
         <div class="form-group">

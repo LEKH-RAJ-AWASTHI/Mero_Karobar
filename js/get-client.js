@@ -2,6 +2,7 @@ function loadClient(){
     fetch('../forms/bill_client.php')
     .then((response)=>response.json())
     .then((data)=>{
+        
         var client_input=document.getElementById('client');
 
         if(data['empty'])
@@ -11,7 +12,7 @@ function loadClient(){
          }
          else
          {
-           var clients=`<option value="">Client</option>`;
+           var clients=`<option selected value="">Client</option>`;
            for(var i in data)
            {
                clients+=`<option value="${data[i].client_id}">${data[i].name}   ${data[i].phone_number}</option>`;
@@ -25,6 +26,7 @@ function loadClient(){
  }
  
  loadClient();
+ console.log("hello");
  
  function show_message(type, text)
  {

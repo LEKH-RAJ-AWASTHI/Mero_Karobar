@@ -7,11 +7,15 @@ if (isset($_SESSION['login'])) {
   echo $_SESSION['login']; //Displaying session message
   unset($_SESSION['login']); //removing session message
 }
+
 if (isset($_SESSION['no-login'])) {
   echo $_SESSION['no-login']; //Displaying session message
   unset($_SESSION['no-login']); //removing session message
 }
-
+if (isset($_SESSION['unauthorized'])) {
+  echo $_SESSION['unauthorized']; //Displaying session message
+  unset($_SESSION['unauthorized']); //removing session message
+}
 ?>
 <?php
 if (isset($_POST['submit'])) {
@@ -29,6 +33,13 @@ if (isset($_POST['submit'])) {
       ' </div>
     ';
     $_SESSION['user'] = $username; //to check if user is logged in or not and logout will unset this session
+    //to check if user is logged in or not and logout will unset this session
+    while($row= mysqli_fetch_assoc($res)){
+      // echo $row['priviledge'];
+      // die();
+      $_SESSION['privilege']= $row['privilege'];
+      $_SESSION['id']= $row['uid'];
+    }
     header("location:" . SITEURL . "sites/index.php");
   } else {
     $_SESSION['login'] = '
@@ -64,7 +75,7 @@ if (isset($_POST['submit'])) {
                   <div class="card-body p-md-5 mx-md-4 mt-5">
 
                     <div class="text-center">
-                      <h3>Mero Karobar</h3>
+                      <h3 class="text-info">Mero Karobar</h3>
                       <span class="mt-1 mb-5 pb-1"><strong>To Enter your record keeping Please login to your
                           account</strong></span>
                     </div>
@@ -78,7 +89,7 @@ if (isset($_POST['submit'])) {
 
                       <div class="form-outline mb-4">
                         <label class="form-label" for="form2Example22">Password</label>
-                        <input type="password" name="password" id="form2Example22" class="form-control" required />
+                        <input type="password" name="password" id="form2Example22" placeholder="Enter Password (at least 8 characters)" pattern=".{8,}" class="form-control" required />
                       </div>
 
                       <div class="text-center pt-1 mb-5 pb-1">
@@ -92,8 +103,8 @@ if (isset($_POST['submit'])) {
                 </div>
                 <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
                   <div class=" px-3 py-4 p-md-5 mx-md-4 mb-5">
-                    <h4 class="mb-4">I am Mero Karobar</h4>
-                    <p class="small mb-0" id="typed-text"> </p>
+                    <h4 class="mb-4 text-info">I am Mero Karobar</h4>
+                    <p class="small mb-0 text-success" id="typed-text"> </p>
                   </div>
                 </div>
               </div>

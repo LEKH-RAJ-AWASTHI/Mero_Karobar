@@ -36,13 +36,13 @@
                         purchase_price='$purchase_price',
                         sales_price='$sales_price',
                         effective_date='$date'";
-            $resPrice=mysqli_query($con, $sqlPrice);
+            $resPrice=mysqli_query($con, $sqlPrice) or die(mysqli_error($con));
             if($resPrice)
             {
                 $sqlStock="INSERT INTO stock SET 
                             stock_level ='$stock',
                             product_id='$product_id'";
-                $resStock=mysqli_query($con, $sqlStock);
+                $resStock=mysqli_query($con, $sqlStock) or die(mysqli_error($con));
                 if($resStock)
                 {
                     $_SESSION['add']='
@@ -81,22 +81,22 @@
     <form action="" method="POST">
         <div class="form-group">
             <label for="product_name">Product Name</label>
-            <input type="text" class="form-control" id="product_name" name="product_name" placeholder="Enter Product Name" required>
+            <input type="text" class="form-control" id="product_name" name="product_name" placeholder="Enter Product Name"  required>
         </div>
         <div class="form-group">
             <label for="purchase_price">Purchase Price</label>
-            <input type="number" class="form-control" id="purchase_price" name="purchase_price" placeholder="Enter Product purchase price" required>
+            <input type="number" class="form-control" id="purchase_price" name="purchase_price" placeholder="Enter short number" pattern="^\d{1,4}$" required>
         </div>
         <div class="form-group">
             <label for="sales_price">Sales Price</label>
-            <input type="number" class="form-control" id="product_name" name="sales_price" placeholder="Enter Product sales price" required>
+            <input type="number" class="form-control" id="product_name" name="sales_price" placeholder="Enter short number" pattern="^\d{1,4}$" required>
         </div>
         <div class="form-group">
             <label for="stock">Stock</label>
             <input type="number" class="form-control" id="stock" name="stock" placeholder="Enter Stock Available in KG" required>
         </div>
         <div class="container-fluid d-flex justify-content-center m-3">
-            <input type="submit" value="Add Product" name="submit" class="btn btn-primary"></input>
+            <input type="submit" value="Add Product" name="submit" class="btn btn-primary">
         </div>
     </form>
 </div>

@@ -2,6 +2,8 @@
 include("../partials/header.inc.php");
 include("../partials/get-transactions.php");
 ?>
+<script src="../js/get-client.js" defer></script>
+
 <?php
 // error_reporting(~E_WARNING);
 
@@ -14,9 +16,9 @@ $date = get_safe_value($con, $_GET['date']);
   <div class="float-start">
     <form action="" method="get">
       <div class="row mt-3 ms-4 ">
-        <div class="col-2">
-          <select style="width:100%" name="date" id="date">
-            <option value="">Date</option>
+        <div class="col-5">
+          <select style="width: 100%;" name="date" id="date">
+            <option selected value="">Date</option>
             <option value="today">Today</option>
             <option value="yesterday">Yesterday</option>
             <option value="last 7 days">Last 7 days</option>
@@ -24,8 +26,8 @@ $date = get_safe_value($con, $_GET['date']);
             <option value="this year">This year</option>
           </select>
         </div>
-        <div class="col-2">
-          <select style="width:100%" name="client" id="client">
+        <div class="col-3">
+          <select style="width : 100%;" name="client" id="client">
           </select>
         </div>
         <div class="col-2">
@@ -69,9 +71,9 @@ switch ($date) {
 }
 
 if (isset($_GET['submit'])) {
-  // echo $client;
-  // echo $startDate;
-  // echo $endDate;
+  echo $client;
+  echo $startDate;
+  echo $endDate;
   // die();
   $transactions = GetTransactions($con, $client, $startDate, $endDate);
 } else {
@@ -150,11 +152,13 @@ $voucher_bill_array = CleanArray($transactions[3]);
               $name = $client['name'];
               // Now you can use the $name variable without worrying about the warning
               echo "$name";
-          } else {
-            ?>
-              <p style="color: red;"><?php echo "Name not available<br>" ?> </p>
+            } else {
+              ?>
+              <p style="color: red;">
+                <?php echo "Name not available<br>" ?>
+              </p>
               <?php
-          }
+            }
           }
 
 
@@ -267,11 +271,14 @@ $voucher_bill_array = CleanArray($transactions[3]);
               $name = $client['name'];
               // Now you can use the $name variable without worrying about the warning
               echo "$name";
-          } else {
-            ?>
-              <p style="color: red;"><?php echo "Name not available<br>" ?> </p>
+            } else {
+              ?>
+              <p style="color: red;">
+                <?php echo "Name not available<br>" ?>
+              </p>
               <?php
-          }          }
+            }
+          }
 
 
           echo "</td>";
@@ -336,6 +343,7 @@ $voucher_bill_array = CleanArray($transactions[3]);
     </thead>
     <tbody>
       <?php
+      // pr($receipt_bill_array);
       if (isset($receipt_bill_array['empty']) && $receipt_bill_array['empty'] === 'empty') {
         echo "<tr>";
         echo '<td colspan="5" style="color: red;">No data found</td>';
@@ -347,7 +355,7 @@ $voucher_bill_array = CleanArray($transactions[3]);
           echo "<tr>";
           echo "<td>" . $receipt_bill['date'] . "</td>";
           echo "<td>";
-          $sql_client = "Select name from client where client_id=" . $purchase_bill['client_id'];
+          $sql_client = "Select name from client where client_id=" . $receipt_bill['client_id'];
           $result_client = mysqli_query($con, $sql_client) or die(mysqli_error($con) . "  of client");
           $client_array = [];
           if (mysqli_num_rows($result_client) > 0) {
@@ -365,11 +373,13 @@ $voucher_bill_array = CleanArray($transactions[3]);
               $name = $client['name'];
               // Now you can use the $name variable without worrying about the warning
               echo "$name";
-          } else {
-            ?>
-              <p style="color: red;"><?php echo "Name not available<br>" ?> </p>
+            } else {
+              ?>
+              <p style="color: red;">
+                <?php echo "Name not available<br>" ?>
+              </p>
               <?php
-          }
+            }
           }
 
 
@@ -422,7 +432,7 @@ $voucher_bill_array = CleanArray($transactions[3]);
           echo "<tr>";
           echo "<td>" . $voucher_bill['date'] . "</td>";
           echo "<td>";
-          $sql_client = "Select name from client where client_id=" . $purchase_bill['client_id'];
+          $sql_client = "Select name from client where client_id=" . $voucher_bill['client_id'];
           $result_client = mysqli_query($con, $sql_client) or die(mysqli_error($con) . "  of client");
           $client_array = [];
           if (mysqli_num_rows($result_client) > 0) {
@@ -440,11 +450,14 @@ $voucher_bill_array = CleanArray($transactions[3]);
               $name = $client['name'];
               // Now you can use the $name variable without worrying about the warning
               echo "$name";
-          } else {
-            ?>
-              <p style="color: red;"><?php echo "Name not available<br>" ?> </p>
+            } else {
+              ?>
+              <p style="color: red;">
+                <?php echo "Name not available<br>" ?>
+              </p>
               <?php
-          }          }
+            }
+          }
 
 
           echo "</td>";
@@ -464,9 +477,5 @@ $voucher_bill_array = CleanArray($transactions[3]);
       ?>
   </table>
 </div>
-<script src="../js/get-client.js"></script>
 
 <?php include('../partials/footer.inc.php'); ?>
-<?php
-
-?>

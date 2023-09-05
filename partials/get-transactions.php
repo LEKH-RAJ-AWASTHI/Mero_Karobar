@@ -273,7 +273,7 @@
 
     function CleanArray($transactions){
         foreach($transactions as $index => $transaction) {
-            if (count($transaction) === 1 && isset($transaction[0]) && $transaction[0] === 'empty') {
+            if (count($transaction) === 1 && isset($transaction[0]) && $transaction[0] == 'empty') {
                 unset($transactions[$index]);
             }
         }
